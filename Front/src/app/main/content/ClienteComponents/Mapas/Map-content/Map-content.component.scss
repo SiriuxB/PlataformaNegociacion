@@ -1,0 +1,79 @@
+.land:hover
+{
+     fill: #224e9c;
+                        fill-opacity: 1;
+                        stroke: white;
+                        cursor: pointer;
+}
+.svg-wrapper { display: inline-block; position: relative; width: 100%;    padding-bottom: 20%;; vertical-align: middle; }
+.svg-wrapper svg { display: inline-block; position: initial; top: 0; left: 0; }
+.example-full-width
+{
+    width: 100%;
+}
+.full
+{
+    max-width: 2000px;
+    width: 100%;
+}
+.AditionalDeps
+{
+  position: absolute;
+    right: 0;
+    top: 30%;
+}
+.tooltiptext {
+    display: none;
+    width: 120px;
+    background-color: #c84c43;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: fixed;
+    z-index: 1;
+  }
+  .tooltiptext1 {
+    display: none;
+    width: 120px;
+    background-color: rgb(100, 1, 1);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: fixed;
+    z-index: 1;
+  }
+  
+  .tooltiptext.active {
+    display: initial;
+  }
+  .tooltiptext1.active {
+    display: initial;
+  }
+  .AditionalDeps{
+    display: flex;
+    flex-direction: column;
+  }
+  .mobilebuttons{
+    font-size: 10px;
+    margin-bottom: 17px;
+    margin: 4px;
+  }
+.mobileContainer{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.poin{
+  cursor: pointer !important;
+  background-color: #d32f2f;
+  color: white;
+
+}
+mat-chip-list{
+  & div.mat-chip-list-wrapper{
+    justify-content: center !important;
+  }
+}

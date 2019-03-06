@@ -1,0 +1,9 @@
+<div *ngIf="Estado" (click)="GotoDetailsNow()">
+  <span>
+    <i class="material-icons">&#xE413;</i> Ver Detalles</span>
+
+
+</div>
+<div *ngIf="!Estado" (click)="Close()">
+  Pendiente de Aprobación
+</div>

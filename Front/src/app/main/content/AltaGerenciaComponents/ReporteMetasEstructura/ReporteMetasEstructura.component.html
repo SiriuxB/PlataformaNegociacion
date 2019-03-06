@@ -1,0 +1,120 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div>
+            <div class="h2 mt-16">Reporte de Metas</div>
+
+        </div>
+        <img width="128" style="height: 28vw;
+            width: 100vw;
+            max-width: 800px;" src="assets/images/logos/intro2.svg">
+    </div>
+    <!-- / HEADER -->
+    <div class="mat-white-bg mat-elevation-z4 p-24  mb-24">
+        <div fxLayoutAlign="start start" class="centerSearch">
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-form-field fxFlex="100">
+                    <mat-select placeholder="Departamentos" [(ngModel)]="SelectedDepto" multiple>
+                        <mat-option [value]="0">
+                            Selecciona
+                        </mat-option>
+                        <mat-option *ngFor="let item of DepartamentosPivot" [value]="item.Id">
+                            {{ item.Nombre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="100">
+                    <mat-select placeholder="Municipios" multiple>
+                        <mat-option [value]="0">
+                            Selecciona
+                        </mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="100">
+                    <mat-select placeholder="Lideres Politicos">
+                        <mat-option [value]="0">
+                            Selecciona
+                        </mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="50" class="example-full-width">
+                    <input matInput [matDatepicker]="picker1" placeholder="Fecha Inicio" [(ngModel)]="FechaInicio">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi="true" #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex="50" class="example-full-width">
+                    <input matInput [matDatepicker]="picker2" placeholder="Fecha Fin" [(ngModel)]="FechaFin">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi="true" #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="ml-24 mr-24" style="display: flex;flex-direction: column;
+                align-items: center;">
+                <div fxLayout="row">
+                    <div fxLayout="column" class="pl-24 pr-24 pb-12">
+                        <div class="icoLike" (click)="chargeGrid()">
+                            <i class="material-icons">&#xE8FA;</i>
+                        </div>
+                        <span style="color:#c84c43">Buscar</span>
+                    </div>
+                    <!--       <div fxLayout="column" class="pl-24 pr-24 pb-12">
+                            <div class="icoLike" (click)="Filter($event)">
+                                <i class="material-icons">&#xE152;</i>
+                            </div>
+                            <span style="color:#c84c43">Filtrar</span>
+                        </div> -->
+                    <div fxLayout="column" class="pl-24 pr-24 pb-12">
+                        <div class="icoLike" (click)="ReturnPage($event)">
+                            <i class="material-icons">&#xE166;</i>
+                        </div>
+                        <span style="color:#c84c43">Volver</span>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <ngx-datatable [selected]="selected" [selectionType]="'single'" class="material" [rows]="MetasGrid" [loadingIndicator]="loadingIndicator"
+                [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [scrollbarH]="true" [reorderable]="reorderable"
+                [limit]="10" >
+
+                <ngx-datatable-column name="Meta " prop="NombreMetas"></ngx-datatable-column>
+                <ngx-datatable-column name="Departamento" prop="NombreDepartamento"></ngx-datatable-column>
+                <ngx-datatable-column name="Cantidad Requerida" prop="Cantidad"></ngx-datatable-column>
+                <ngx-datatable-column name="Cantidad Acumulada" prop="Acumulada"></ngx-datatable-column>
+                <ngx-datatable-column name="Gerente " prop="NombreGerente"></ngx-datatable-column>
+                <ngx-datatable-column name="Director " prop="NombreDirector"></ngx-datatable-column>
+                
+
+            </ngx-datatable>
+            <div class="mt-12">
+                <ngx-datatable [selected]="selected" [selectionType]="'single'" class="material" [rows]="TestGrid2" [loadingIndicator]="loadingIndicator"
+                    [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [scrollbarH]="true" [reorderable]="reorderable"
+                    [limit]="10">
+
+                    <ngx-datatable-column name="Total Registrados " prop="Total"></ngx-datatable-column>
+                    <ngx-datatable-column name="Tipo" prop="Tipo"></ngx-datatable-column>
+                    <ngx-datatable-column name="Pendiente" prop="Pendiente"></ngx-datatable-column>
+                    <ngx-datatable-column name="Aprobado" prop="Aprobado"></ngx-datatable-column>
+                    <ngx-datatable-column name="No Aprobado" prop="NoAprobado"></ngx-datatable-column>
+                    <ngx-datatable-column name="En Revision " prop="Revision"></ngx-datatable-column>
+
+
+
+
+                </ngx-datatable>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+
+
+</div>

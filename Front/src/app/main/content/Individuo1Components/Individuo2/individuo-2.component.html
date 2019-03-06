@@ -1,0 +1,222 @@
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="h1 mt-16">Creación de Individuo 2</div>
+        </div>
+        <img width="128" style="height: 28vw;
+      
+        width: 100vw;
+            
+        max-width: 800px;" src="assets/images/logos/intro2.svg">
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24 mat-white-bg">
+
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="column">
+
+            <!-- REACTIVE FORM EXAMPLE -->
+
+            <form class="mat-white-bg mat-elevation-z4 p-24 mr-24 " fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+                [formGroup]="form">
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div class="toolbar px-24 py-8 headerback">
+                        <div class="h2 mb-24">Datos del Individuo 2</div>
+                        <div fxLayout="column">
+                            <div class="icoLike" (click)="ReturnPage($event)">
+                                <i class="material-icons">&#xE166;</i>
+                            </div>
+                            <span style="color:#c84c43">Volver</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- *********************************************************** -->
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field fxFlex="50">
+                        <input matInput type="text" placeholder="Cedula" formControlName="Cedula" [textMask]="{mask: MaskedNumber}" required>
+                        <mat-error *ngIf="formErrors.Cedula.required">
+                            Cedula es requerida
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Nombre" formControlName="Nombre" required>
+                        <mat-error *ngIf="formErrors.Nombre.required">
+                            Nombre es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Apellido" formControlName="Apellido" required>
+                        <mat-error *ngIf="formErrors.Apellido.required">
+                            Apellido es requerido
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Dirección" formControlName="Direccion" required>
+                        <mat-error *ngIf="formErrors.Direccion.required">
+                            Dirección es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Email" formControlName="email" required>
+                        <mat-error *ngIf="formErrors.email.required">
+                            Correo electronico es requerido
+                        </mat-error>
+                        <mat-error *ngIf="!formErrors.email.required && formErrors.email.email">
+                            Por favor ingrese un correo electronico valido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Telefono Fijo" formControlName="Telefonof" [textMask]="{mask: MaskedNumberNoDecimal}">
+                    </mat-form-field>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Telefono Celular" formControlName="Celular" [textMask]="{mask: MaskedNumberNoDecimal}" required>
+                        <mat-error *ngIf="formErrors.Celular.required">
+                            Celular es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="50">
+                        <mat-select placeholder="Tipo Individuo" formControlName="TipoIndividuo2" (change)="CargarPerfil($event)" [(ngModel)]="TipoIndividuo2Seleccionado"
+                            required>
+                            <mat-option *ngFor="let Item of ListTipoIndividuo2" [value]="Item">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.TipoIndividuo2.required">
+                            Tipo Individuo es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div fxLayout="row" *ngIf="ShowErrorSave" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div fxFlex="100" style="color:brown">Error al guardar!</div>
+                </div>
+            </form>
+            <!--  <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div class="toolbar px-24 py-8 headerback">
+                        <div class="h2 mb-24">Asignación de Perfil</div>
+                    </div>
+                </div>   -->
+            <form class="mat-white-bg mat-elevation-z4 p-24 mr-24 mb-24" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+                [formGroup]="formDinamic">
+
+
+                <div *ngIf="showError" style="color:brown">{{errorMesage}}</div>
+                <!-- *********************************************************** -->
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field fxFlex="80" *ngIf="showDepartamento">
+                        <mat-select placeholder="Departamento" formControlName="Departamento" (change)="SelectedDepartamento($event)">
+                            <mat-option *ngFor="let Item of ListDepartamentos" [value]="Item">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <div fxFlex="8" class="icoLike1" (click)="AgregarItem(1)" *ngIf="showDepartamento && DepartamentoConfig">
+                        <i class="material-icons icoClassNow">&#xE145;</i>
+                    </div>
+                    <div fxFlex="9"  *ngIf="showDepartamento && DepartamentoConfig">
+                        <i class="indicator">{{countDepartamento }}</i>
+                    </div>
+                    <mat-form-field fxFlex="80" *ngIf="showMunicipio">
+                        <mat-select placeholder="Municipio" formControlName="Municipio" (change)="SelectedMunicipio($event)">
+                            <mat-option *ngFor="let Item of ListMunicipiosGroup" [value]="Item.Id">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <div fxFlex="8" class="icoLike1" (click)="AgregarItem(2)" *ngIf="showMunicipio  && MunicipioConfig">
+                        <i class="material-icons icoClassNow">&#xE145;</i>
+                    </div>
+                    <div fxFlex="8"  *ngIf="showMunicipio  && MunicipioConfig">
+                        <i class="indicator">{{countMunicipio }}</i>
+                    </div>
+                    <mat-form-field fxFlex="80" *ngIf="showZonaElectoral">
+                        <mat-select placeholder="Zona Electoral" formControlName="ZonaElectoral" (change)="SelectedZonaElectoral($event)">
+                            <mat-option *ngFor="let Item of ListZonaElectoralGroup" [value]="Item.Id">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <div fxFlex="8" class="icoLike1" (click)="AgregarItem(3)" *ngIf="showZonaElectoral  && ZonaElectoralConfig">
+                        <i class="material-icons icoClassNow">&#xE145;</i>
+                    </div>
+                    <div fxFlex="8"  *ngIf="showZonaElectoral  && ZonaElectoralConfig">
+                        <i class="indicator">{{countZonaElectoral}}</i>
+                    </div>
+                    <mat-form-field fxFlex="80" *ngIf="showPuestoVotacion">
+                        <mat-select placeholder="Puesto de Votación" formControlName="PuestoVotacion" (change)="SelectedPuestoVotacion($event)">
+                            <mat-option *ngFor="let Item of ListPuestoVotacionGroup" [value]="Item.Id">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <div fxFlex="8" class="icoLike1" (click)="AgregarItem(4)" *ngIf="showPuestoVotacion  && PuestoVotacionConfig">
+                        <i class="material-icons icoClassNow">&#xE145;</i>
+                    </div>
+                    <div fxFlex="8"  *ngIf="showPuestoVotacion  && PuestoVotacionConfig">
+                        <i class="indicator">{{countPuestoVotacion}}</i>
+                    </div>
+                    <mat-form-field fxFlex="80" *ngIf="showMesa">
+                        <mat-select placeholder="Mesas" formControlName="Mesa">
+                            <mat-option *ngFor="let Item of ListMesas" [value]="Item">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <div fxFlex="8" class="icoLike1" (click)="AgregarItem(5)" *ngIf="showMesa  && MesaConfig">
+                        <i class="material-icons icoClassNow">&#xE145;</i>
+                    </div>
+                    <div fxFlex="8"  *ngIf="showMesa  && MesaConfig">
+                        <i class="indicator">{{countMesas}}</i>
+                    </div>
+
+                </div>
+                <div *ngIf="SaveInProgress">
+                    <mat-spinner style="margin:0 auto;"></mat-spinner>
+                </div>
+                <div fxLayout="row" *ngIf="ShowSuccess" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div fxFlex="100" style="color:#19611e">Registro Exitoso! Usuario creado Nombre :
+                        <span style="font-weight: bolder"> {{UserNameTemp}} </span> - Contraseña Temporal :
+                        <span style="font-weight: bolder">{{PasswordTemp}}</span>
+                    </div>
+                </div>
+                <button (click)="EnviarInfo()" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT" [disabled]="form.invalid || SaveInProgress">
+                    Enviar Información
+                </button>
+
+
+            </form>
+
+
+            <!-- / CONTENT -->
+
+        </div>
+    </div>
+</div>

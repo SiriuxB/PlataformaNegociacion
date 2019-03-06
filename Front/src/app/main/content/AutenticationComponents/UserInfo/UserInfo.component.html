@@ -1,0 +1,36 @@
+<div id="register-form" *fuseIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+    <div class="title" style="font-weight: bolder">DATOS DE CUENTA</div>
+
+    <div class="logo">
+        <img *ngIf="image!= null" [src]="image">
+        <img *ngIf="image== null" src="../../../../../assets/images/avatars/profile.jpg">
+    </div>
+
+    <div name="registerForm" class="fullwidth">
+        <mat-form-field class="fullwidth">
+            <input matInput placeholder="Nombre" [(ngModel)]="ClienteInfo.Nombre" disabled>
+
+        </mat-form-field>
+        <mat-form-field class="fullwidth">
+            <input matInput placeholder="Apellido" [(ngModel)]="ClienteInfo.Apellido" disabled>
+        </mat-form-field>
+
+        <mat-form-field class="fullwidth">
+            <input matInput placeholder="Email" [(ngModel)]="ClienteInfo.Correo" disabled>
+        </mat-form-field>
+        <mat-form-field class="fullwidth">
+            <input matInput type="text" placeholder="Cedula" [(ngModel)]="ClienteInfo.Cedula" disabled>
+
+        </mat-form-field>
+        <mat-form-field class="fullwidth">
+            <input matInput [(ngModel)]="ClienteInfo.Telefono" placeholder="Telefono Fijo" disabled>
+        </mat-form-field>
+        <mat-form-field class="fullwidth">
+            <input matInput [(ngModel)]="ClienteInfo.Celular" placeholder="Telefono Celular" disabled>
+        </mat-form-field>
+
+
+
+    </div>
+
+</div>

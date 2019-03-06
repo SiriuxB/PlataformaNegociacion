@@ -1,0 +1,25 @@
+<div style="width: 100%;height: 70vh;">
+    <h2>Aprobar Imagen</h2>
+
+    <div>
+        <img  [src]="imagee" width="250px;" height="250px;">
+    </div>
+    
+    <div *ngIf="SaveInProgress">
+        <mat-spinner style="margin:0 auto;"></mat-spinner>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <button (click)="aprobar()" mat-raised-button color="accent" class="submit-button" aria-label="" style="margin-right:  70px;">
+            Aprobar
+          </button>
+          
+          <button (click)="dialogRef.close(true)"  mat-raised-button color="accent" class="submit-button" aria-label="">
+            Cancelar
+          </button>
+    </div>
+    
+    
+    
+    <h3>{{resultado}}</h3>
+</div>

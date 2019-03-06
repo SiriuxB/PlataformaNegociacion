@@ -1,0 +1,40 @@
+<div class="bubble">
+    <table style="text-align: center;width: 100%">
+        <tr>
+            <td class="titles">DEPARTAMENTO</td>
+            <td class="titles"># ACTIVIDADES</td>
+        </tr>
+        <tr>
+            <td class="values">{{data.Nombre}}</td>
+            <td class="values">{{data.NumeroEventos }}</td>
+        </tr>
+
+    </table>
+</div>
+<div class="centerAlign">
+
+
+    <h2 class="centerAlign">¿Que quieres hacer?</h2>
+    <mat-list class="centerAlign">
+
+
+        <mat-list-item class="selection" (click)="VisorEvent()">
+            <div>
+                <mat-icon mat-list-icon>person_pin_circle</mat-icon>
+                <span class="textslection">Ver Actividades</span>
+            </div>
+
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item class="selection" (click)="CreateEvent()">
+            <div>
+                <mat-icon mat-list-icon>group_add</mat-icon>
+                <span class="textslection">Crear Actividades</span>
+            </div>
+
+        </mat-list-item>
+
+    </mat-list>
+</div>

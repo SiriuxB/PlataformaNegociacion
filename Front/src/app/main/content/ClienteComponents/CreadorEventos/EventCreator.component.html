@@ -1,0 +1,162 @@
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="h1 mt-16"></div>
+        </div>
+        
+    </div>
+
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24 mat-white-bg">
+
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row">
+
+            <!-- REACTIVE FORM EXAMPLE -->
+
+            <form class="mat-white-bg mat-elevation-z4 p-24 mr-24 mb-24" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+                [formGroup]="form">
+
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div class="toolbar px-24 py-8 headerback">
+                        <div class="h2 mb-24">Datos de la Actividad</div>
+                        <div fxLayout="column">
+                            <div class="icoLike" (click)="ReturnPage($event)">
+                                <i class="material-icons">&#xE166;</i>
+                            </div>
+                            <span style="color:#c84c43">Volver</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Nombre del Evento" formControlName="Nombre" required>
+                        <mat-error *ngIf="formErrors.Nombre.required">
+                            Nombre evento es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Breve Descripción" formControlName="Descripcion" required>
+                        <mat-error *ngIf="formErrors.Descripcion.required">
+                            Descripcion es requerida
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+        
+                    <mat-form-field fxFlex="100">
+                        <mat-select placeholder="Departamentos"  formControlName="Departamentos" [(ngModel)]="DepartamentoSeleccionado" (change)="SelectedDepartamento($event)"
+                            required>
+                            <mat-option *ngFor="let Item of ListDepartamentos" [value]="Item">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Departamentos.required">
+                            Departamento es requerido
+                        </mat-error>
+                    </mat-form-field>
+            <!-- 
+                    <mat-form-field fxFlex="50">
+                        <mat-select placeholder="Sector" formControlName="Sector" [(ngModel)]="sectorseleccionado" (change)="SelectedSector($event)"
+                         required>
+                            <mat-option *ngFor="let Item of ListSector" [value]="Item">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Sector.required">
+                            Sector es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="100">
+                        <mat-select placeholder="Gerente Sector" formControlName="gerenteSector" [(ngModel)]="gerenteseleccionado" (change)="SelectedGerenteSect($event)"
+                         required>
+                            <mat-option *ngFor="let Item of ListGerSec" [value]="Item">
+                                {{ Item.Nombres }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Sector.required">
+                            Sector es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="100">
+                        <mat-select placeholder="Director Departamento" formControlName="directorDep"  required>
+                            <mat-option *ngFor="let Item of listDirectDep" [value]="Item">
+                                {{ Item.Nombres }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Sector.required">
+                            Sector es requerido
+                        </mat-error>
+                    </mat-form-field>
+                -->
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Nombre del creador del evento" [(ngModel)]="DirectorTecnicoSector" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="100">
+                        <mat-select placeholder="Tipo Evento" formControlName="TipoEvento" [(ngModel)]="TipoEventoSeleccionado" required>
+                            <mat-option *ngFor="let Item of ListTipoEvento" [value]="Item.Id">
+                                {{ Item.Nombre + ' - ' + Item.Descripcion }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Departamentos.required">
+                            tipo evento es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Asistentes estimadas" formControlName="Personas" [textMask]="{mask: MaskedNumberNoDecimal}"
+                            required>
+                        <mat-error *ngIf="formErrors.Personas.required">
+                            Numero de personas requerido
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- 
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Costo" formControlName="Costo" [textMask]="{mask: MaskPrice}" >
+                        <mat-error *ngIf="formErrors.Costo.required">
+                            Costo requerido
+                        </mat-error>
+                    </mat-form-field>
+                -->
+
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                    <button fxFlex="100" (click)="AbrirCamara()" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT">
+                        <i class="material-icons">&#xE3B0;</i> Capturar
+                    </button>
+                </div>
+                <button (click)="ConfirmarEvento()" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT" [disabled]="form.invalid || SaveInProgress">
+                    Enviar Informacion
+                </button>
+                <div fxLayout="row" *ngIf="SucceSave" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div fxFlex="100" style="color:#19611e">Reunión Guardada correctamente</div>
+                </div>
+                <div *ngIf="SaveInProgress">
+                    <mat-spinner style="margin:0 auto;"></mat-spinner>
+                </div>
+            </form>
+
+            <!-- / CONTENT -->
+
+        </div>
+    </div>
+</div>

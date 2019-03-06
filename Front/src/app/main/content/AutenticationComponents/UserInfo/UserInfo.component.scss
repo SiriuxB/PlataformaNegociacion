@@ -1,0 +1,47 @@
+@import "src/@fuse/scss/fuse";
+@import "src/@fuse/scss/fuse";
+            #register-form {
+                width: 384px;
+                max-width: 384px;
+                padding: 32px;
+                background: #FFFFFF;
+                text-align: center;
+             
+
+                @include media-breakpoint('xs') {
+                    padding: 24px;
+                    width: 100%;
+                }
+
+            
+   
+}
+.fotoContainer{
+    height: 200px;
+}
+.camera {
+    width: 20%!important;
+    background-color: #76e47d;
+}
+.cancel {
+    width: 20%!important;
+    background-color: #f1756d;
+}
+.favButtons
+{
+    margin-top: 60px;
+}
+.successText
+{
+    color: #19611e
+}
+.ErrorText
+{
+    color: #d43c31;
+}
+.logo{
+    margin: 0 auto;
+}
+.fullwidth{
+    width: 100%
+}

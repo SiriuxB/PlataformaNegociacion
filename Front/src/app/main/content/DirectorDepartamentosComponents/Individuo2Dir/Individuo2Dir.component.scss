@@ -1,0 +1,60 @@
+.icoClassNow{
+    background: #c84c43;
+    color: white;
+    border-radius: 12px;
+}
+
+    .content {
+ 
+        
+
+        .horizontal-stepper-wrapper,
+        .vertical-stepper-wrapper {
+            max-width: 800px;
+        }
+    }
+
+
+form {
+    width: 100%;
+    max-width: 800px !important;
+}
+
+.form-errors-model {
+    flex: 1;
+
+    code {
+        background: none !important;
+    }
+}
+
+.icoLike1
+{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+}
+.headerback{
+    width: 100%;
+    justify-content: space-between !important;
+    display: flex;
+}
+.indicator
+{
+    padding-left: 9px;
+    padding-right: 11px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.icoLike
+{
+    width: 40px;
+    height: 40px;
+    background: #c84c43;
+    font-size: 31px;
+    padding-left: 9px;
+    border-radius: 22px;
+    cursor: pointer;
+    color: white;
+}

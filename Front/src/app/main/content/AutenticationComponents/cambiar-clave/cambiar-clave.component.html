@@ -1,0 +1,68 @@
+<div id="login" fxLayout="column" fusePerfectScrollbar>
+
+    <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="login-form" *fuseIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img src="assets/images/logos/intro1.jpeg">
+            </div>
+
+            <div class="title">Cambiar clave</div>
+
+            <div *ngIf="!divclaves">
+
+
+                <div fxLayout="column">
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Email:" [(ngModel)]="email">
+                    </mat-form-field>
+
+
+
+                </div>
+                <div>
+                    <button (click)="validar()" mat-raised-button color="accent" class="submit-button" aria-label="" style="height: 50px;">
+                        Validar
+                    </button>
+                </div>
+            </div>
+            <br/>
+            <div *ngIf="divclaves" fxLayout="column">
+                <mat-form-field fxFlex="100">
+                    <input type="password" matInput placeholder="Clave:" [(ngModel)]="clave" style="width: 180px;">
+                </mat-form-field>
+                <mat-form-field fxFlex="100">
+                    <input type="password" matInput placeholder="Repetir Clave:" [(ngModel)]="clave2" (blur)="validarclave()">
+                </mat-form-field>
+
+            </div>
+            <div>
+                <h3>{{resultado}}</h3>
+            </div>
+            <div *ngIf="divclaves">
+                <button (click)="cambiar()" mat-raised-button color="accent" class="submit-button" aria-label="">
+                    Cambiar
+                </button>
+            </div>
+
+
+
+            <div *ngIf="Loading">
+                <mat-spinner style="margin:0 auto;"></mat-spinner>
+            </div>
+
+       <!--     <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">No tienes Cuenta?</span>
+                <a class="link" [routerLink]="'/register'">Crear una cuenta</a>
+            </div> -->
+
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <a class="link" [routerLink]="'/Login'">Click aqui para logearte</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,80 @@
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="h1 mt-16">Creación de Sitio de Escrutiño</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row">
+
+            <!-- REACTIVE FORM EXAMPLE -->
+
+            <form class="mat-white-bg mat-elevation-z4 p-24 mr-24 mb-24" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+                [formGroup]="form">
+
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div class="toolbar px-24 py-8 headerback">
+                        <div class="h2 mb-24">Datos del Sitio de Escrutiño</div>
+                        <div class="icoLike" (click)="ReturnPage($event)">
+                            <i class="material-icons">&#xE166;</i>
+                        </div>
+                    </div>
+                </div>
+                <!-- *********************************************************** -->
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Nombre Sitio Escrutiño" formControlName="Nombre" required [ngModel]="Nombre">
+                        <mat-error *ngIf="formErrors.Nombre.required">
+                            Nombre Sitio Escrutiño es requerido
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100">
+                        <mat-select placeholder="Departamento" formControlName="Departamentos" [(ngModel)]="DepartamentoSeleccionado" (change)="SelectedDepartamento($event)"
+                            required>
+                            <mat-option *ngFor="let Item of ListDepartamentos" [value]="Item.Id">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Departamentos.required">
+                            Departamento es requerido
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100">
+                        <mat-select placeholder="Municipio" [(ngModel)]="MunicipioSeleccionado" formControlName="Municipios" required>
+                            <mat-option *ngFor="let Item of ListMunicipiosGroup" [value]="Item.Id">
+                                {{ Item.Nombre }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formErrors.Municipios.required">
+                            Municipio es requerido
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-checkbox class="remember-me" aria-label="Remember Me" [checked]="true" [(ngModel)]="checked" formControlName="checkedActivo">
+                        Activo
+                    </mat-checkbox>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <br/>
+                </div>
+                <!-- *********************************************************** -->
+
+                <button (click)="EnviarInfo()" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT" [disabled]="form.invalid">
+                    Enviar Información
+                </button>
+                <div fxLayout="row" *ngIf="SucceSave" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div fxFlex="100" style="color:#19611e">Registro Exitoso!</div>
+                </div>
+
+            </form>
+
+            <!-- / CONTENT -->
+
+        </div>
+    </div>
+</div>

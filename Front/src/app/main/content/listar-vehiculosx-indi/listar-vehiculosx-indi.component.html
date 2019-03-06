@@ -1,0 +1,92 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div class="h2 mt-16">Listado de Metas</div>
+            <div class="h2 ">{{DatoDepto?.Nombre | uppercase }}</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <div class="mat-white-bg mat-elevation-z4 p-24 mr-24 mb-24">
+        <div class="toolbar px-24 py-8 headerback">
+            <div class="h2 mb-24">Listado de Metas</div>
+            <div fxLayout="column">
+                <div class="icoLike" (click)="ReturnPage($event)">
+                    <i class="material-icons">&#xE166;</i>
+                </div>
+                <span style="color:#c84c43">Volver</span>
+            </div>
+        </div>
+        <div class="content p-24">
+            <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row" style="display: none;" class="filtros">
+
+                <mat-form-field fxFlex="100" style="display: none;">
+                    <input matInput placeholder="Cedula" [(ngModel)]="cedula">
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100" style="display: none;">
+                    <input matInput placeholder="Nombre Cliente" [(ngModel)]="nombrefil">
+                </mat-form-field>
+
+                <mat-form-field style="display: none;">
+                    <mat-select placeholder="Estado" [(ngModel)]="Aprobada">
+                        <mat-option [value]="1">Aprobada</mat-option>
+                        <mat-option [value]="0">No Aprobada</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field style="display: none;">
+                    <mat-select placeholder="Departamentos" [(ngModel)]="DepartamentoSeleccionado" (change)="SelectedDepartamento($event)">
+                        <mat-option *ngFor="let Item of ListDepartamentos" [value]="Item.Id">
+                            {{ Item.Nombre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field style="display: none;">
+                    <mat-select placeholder="Municipios" [(ngModel)]="MunicipioSeleccionado">
+                        <mat-option *ngFor="let Item of ListMunicipiosGroup" [value]="Item.Id">
+                            {{ Item.Nombre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button (click)="filtrar()" mat-raised-button color="accent" class="submit-button" aria-label="" style="display: none;">
+                    Buscar
+                </button>
+            </div>
+
+            <ngx-datatable [selected]="selected" [selectionType]="'single'" (select)="selectedEvent($event)" class="material" [rows]="rows"
+                [loadingIndicator]="loadingIndicator" [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
+                [scrollbarH]="true" [reorderable]="reorderable" [limit]="10">
+
+
+
+                <ngx-datatable-column name="Id" prop="Id"></ngx-datatable-column>
+                <ngx-datatable-column name="Nombre" prop="Nombre"></ngx-datatable-column>
+                <ngx-datatable-column name="TipoVehiculo" prop="Observacion"></ngx-datatable-column>
+                <ngx-datatable-column name="Capacidad" prop="Id_Item"></ngx-datatable-column>                
+                <ngx-datatable-column name="Placa" prop="Placa"></ngx-datatable-column>
+                <ngx-datatable-column name="Soat" prop="Soat"></ngx-datatable-column>
+                <ngx-datatable-column name="Pase" prop="Pase"></ngx-datatable-column>
+                <ngx-datatable-column name="Conductor" prop="Conductor"></ngx-datatable-column>
+                <ngx-datatable-column name="Modelo" prop="Modelo"></ngx-datatable-column>
+                <ngx-datatable-column name="Color" prop="Color"></ngx-datatable-column>
+                <ngx-datatable-column name="ValorServicio" prop="ValorServicio"></ngx-datatable-column>
+                <ngx-datatable-column name="Id_Usuario" prop="Id_Usuario"></ngx-datatable-column>
+                <ngx-datatable-column name="Id_Departamento" prop="Id_Departamento"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Id_Municipio" prop="Id_Municipio"></ngx-datatable-column>
+                <ngx-datatable-column name="Estado" prop="Estado"></ngx-datatable-column>
+                <ngx-datatable-column name="FechaCreacion" prop="FechaCreacion"></ngx-datatable-column>
+                <ngx-datatable-column name="Id_directordepto" prop="Id_directordepto"></ngx-datatable-column>
+                <ngx-datatable-column name="Id_individuo2" prop="Id_individuo2"></ngx-datatable-column>
+            </ngx-datatable>
+
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+
+
+</div>

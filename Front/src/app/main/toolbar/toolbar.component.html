@@ -1,0 +1,59 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+
+    <mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+
+        <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-button class="toggle-button-navbar mat-icon-button" *ngIf="!noNav" (click)="toggleSidebarOpened('navbar')" fxHide.gt-md>
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" fxHide.gt-md></div>
+
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNav">
+                <div class="logo ml-16">
+                    <img class="logo-icon" src="assets/images/logos/intro2.svg">
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-button class="user-button">
+                <!-- [matMenuTriggerFor]="userMenu"-->
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <!--       <img *ngIf="showFoto" class="avatar"  [src]="PerfilNow">
+                    <img *ngIf="!showFoto" class="avatar"  src="assets/images/avatars/profile.jpg">
+-->
+                    <span class="username mr-12" style="    FONT-SIZE: 25PX;">PLATAFORMA DE NEGOCIACIÓN</span>
+                    <!--  <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>-->
+                </div>
+            </button>
+
+            <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+
+                <button mat-menu-item (click)="showUserInfo()">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Mi Perfil</span>
+                </button>
+
+                <button mat-menu-item class="" (click)="logOut()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Salir</span>
+                </button>
+
+            </mat-menu>
+
+
+
+
+
+
+        </div>
+    </div>
+</mat-toolbar>
