@@ -13,7 +13,7 @@ const DEFAULT_CONFIG = {
         mode: 'fullwidth' // 'boxed', 'fullwidth'
     },
     colorClasses: {
-        toolbar: 'mat-blue-900-bg',
+        toolbar: 'mat-fuse-dark-700-bg',
         navbar: 'mat-fuse-dark-700-bg',
         footer: 'mat-fuse-dark-900-bg'
     },
@@ -99,7 +99,7 @@ export class FuseConfigService {
                 ...config.colorClasses
             }
         };
-        this.config.colorClasses.toolbar = 'mat-blue-900-bg',
+        this.config.colorClasses.toolbar = 'mat-fuse-dark-700-bg',
 
             // Trigger the event
             this.onConfigChanged.next(this.config);

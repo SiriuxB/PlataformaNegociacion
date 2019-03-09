@@ -1,0 +1,211 @@
+.yellowColumn {
+		background: yellow;
+		color: black;
+		background-clip: content-box;
+}
+
+.appindicators {
+	width: 25%;
+}
+
+.animationcontainer {
+		width: 100%;
+		overflow: hidden;
+}
+
+.container {
+		position: relative;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		width: 100%;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+}
+
+.circle-container {
+		width: 400px;
+		height: 200px;
+		margin: auto;
+		position: absolute;
+}
+
+#indicators {
+		overflow: hidden;
+		position: relative;
+		padding: .2em 0;
+		font-size:13px !important;
+}
+
+#contentIndicators {
+		-webkit-animation: moveIndicator;
+		animation: moveIndicator;
+		-webkit-animation-duration: 25s;
+		animation-duration: 25s;
+		-webkit-animation-timing-function: linear;
+		animation-timing-function: linear;
+		-webkit-animation-delay: 0s;
+		animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		animation-direction: normal;
+		-webkit-animation-play-state: running;
+		animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		-webkit-keyframes: moveIndicator;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		width: 200%;
+		display: -webkit-flex;
+		display: flex;
+		margin-left: 0%;
+		overflow: hidden;
+}
+
+#contentIndicators:hover {
+		-webkit-animation-play-state: paused;
+		animation-play-state: paused;
+}
+
+#contentIndicators h3 {
+		margin-right: 1em;
+		display: inline-block;
+}
+
+@-webkit-keyframes moveIndicator {
+		0% {
+				margin-left: 85vw;
+		}
+		100% {
+				margin-left: -100vw;
+		}
+}
+
+@keyframes moveIndicator {
+	0% {
+			margin-left: 85vw;
+	}
+	100% {
+			margin-left: -100vw;
+	}
+}
+
+#containerHeaderMarket {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+		padding: 0 1em;
+		height: 10%;
+}
+
+.ind-IndicatorType {
+		color: #ffffff;
+		font-size: 80%;
+}
+
+.ind-Value {
+		color: #2561aa;
+		text-align: right;
+}
+
+.ind-PercentageVariation {
+		color: red;
+		font-size: 80%;
+}
+
+.ticket-instrument {
+		color: #2561aa;
+		text-align: right;
+		font-size: 80%;
+}
+
+#container-ticket {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		font-size: 13px;
+		position: absolute;
+		background-color: #302e2e;
+		height: 25px;
+}
+
+#container-ticket div:first-child {
+		margin-right: 1em;
+		color: white;
+}
+
+#container-ticket div:last-child {
+		color: white;
+}
+
+#title-total {
+		color: orange;
+}
+
+#title-Value {
+		color: white;
+}
+
+.icon-arrow-up2 {
+		color: green;
+}
+
+.icon-arrow-down2 {
+		color: red;
+}
+
+#container-ticket div p {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+}
+
+#container-ticket div p span {
+		margin-left: 1em;
+		margin-left: 1em;
+		-ms-flex-item-align: end;
+		-webkit-align-self: flex-end;
+		        align-self: flex-end;
+}
+
+#container-stateConecction {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		-webkit-transform: translateY(-50%);
+		    -ms-transform: translateY(-50%);
+		        transform: translateY(-50%);
+		background-color: #302e2e;
+		color: #fff;
+		z-index: 999;
+		padding: 0 1em;
+		line-height: 2em;
+}
+
+#container-stateConecction span {
+	margin: 0 5px;
+}
+
+#imgstatusbar{
+	height: 18px;
+}

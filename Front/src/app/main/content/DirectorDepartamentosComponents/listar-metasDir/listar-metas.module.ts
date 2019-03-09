@@ -20,7 +20,7 @@ const routes: Routes = [
     {
         path: 'ListarMetasdetalle',
         component: ListarMetasComponent
-        //       , canActivate:[AdminGuard]
+        //       , 
     }
 ];
 

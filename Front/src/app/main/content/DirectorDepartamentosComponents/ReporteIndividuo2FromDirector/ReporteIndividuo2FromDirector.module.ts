@@ -20,7 +20,7 @@ const routes: Routes = [
     {
         path: 'ReporteIndividuo2FromDirector',
         component: ReporteIndividuo2FromDirectorComponent
-        //       , canActivate:[AdminGuard]
+        //       , 
     }
 ];
 

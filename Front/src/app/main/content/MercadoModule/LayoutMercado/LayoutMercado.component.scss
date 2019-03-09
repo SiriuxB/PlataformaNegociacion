@@ -1,0 +1,31 @@
+.example-full-width
+{width: 100%;}
+
+
+.icoLike
+{
+    width: 40px;
+    height: 40px;
+    background: #c84c43;
+    font-size: 31px;
+    padding-left: 9px;
+    border-radius: 22px;
+    cursor: pointer;
+    color: white;
+}
+.headerback{
+    justify-content: space-between !important;
+}
+.bottomSeparator
+{
+    border-bottom: solid;
+    cursor: pointer;
+}
+#layout {
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    -webkit-flex: auto;
+            flex: auto;
+   height: 100%;
+   width: 100%;
+}
