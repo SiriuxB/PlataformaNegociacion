@@ -37,6 +37,8 @@ import { CommunicationService } from './ApiServices/CommunicationService';
 import { LayoutMercadoModule } from './main/content/MercadoModule/LayoutMercado/LayoutMercado.module';
 import { GridMercadoModule } from './main/content/MercadoModule/GridMercado/GridMercado.module';
 import { appRoutes } from './appRoutes';
+import { RealtimeService, SignalrWindow } from './ApiServices/realtime.service';
+import { LoginService } from './ApiServices/login.service';
 
 // It is required to have JQuery as global in the window object.
 window['$'] = $;
@@ -64,7 +66,7 @@ window['$'] = $;
         Individuo1Module,
         MainPageDirectorModule,
         LayoutMercadoModule,
-        GridMercadoModule,   
+        GridMercadoModule,
 
     ],
     providers: [
@@ -79,7 +81,10 @@ window['$'] = $;
         , ClientGuard
         , AdminGuard
         , AltaGerenciaGuard
-        , CommunicationService]
+        , CommunicationService
+        , RealtimeService
+        , LoginService
+        , { provide: SignalrWindow, useValue: window },]
     ,
     bootstrap: [
         AppComponent

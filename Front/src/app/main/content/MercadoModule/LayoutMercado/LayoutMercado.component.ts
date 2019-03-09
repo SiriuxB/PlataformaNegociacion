@@ -1,18 +1,12 @@
 import { Component, OnInit, ElementRef, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
-import { E_Reunion } from 'app/Models/E_Reunion';
 import { NavigationInfoService } from 'app/ApiServices/NavigationInfoService';
-import { ImageService } from 'app/ApiServices/ImageServices';
-import { E_Imagen } from 'app/Models/E_Imagen';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { ReunionService } from 'app/ApiServices/ReunionService';
-import { E_Comentarios } from 'app/Models/E_Comentarios';
-import { UserService } from 'app/ApiServices/UserService';
-import { E_Usuario } from 'app/Models/E_Usuario';
+
 import { Router } from '@angular/router';
 import * as GoldenLayout from 'golden-layout';
 import { CommunicationService } from 'app/ApiServices/CommunicationService';
-import { GoldenLayoutConfiguration } from '@embedded-enterprises/ng6-golden-layout';
 import { GridMercadoComponent } from '../GridMercado/GridMercado.component';
+import { RealtimeService } from 'app/ApiServices/realtime.service';
+import { LoginService } from 'app/ApiServices/login.service';
 
 @Component({
     selector: 'LayoutMercado',
@@ -21,11 +15,6 @@ import { GridMercadoComponent } from '../GridMercado/GridMercado.component';
 })
 export class LayoutMercadoComponent implements OnInit {
 
-    registerForm: FormGroup;
-    imageUrl: string
-    dataEvento: E_Reunion = new E_Reunion()
-    ImagenGeneral: E_Imagen = new E_Imagen()
-    ListComentarios: Array<E_Comentarios> = new Array<E_Comentarios>()
     registerFormErrors: any; myLayout: GoldenLayout;
     title = 'popout-ex';
 
@@ -58,6 +47,8 @@ export class LayoutMercadoComponent implements OnInit {
         private CommunicationService: CommunicationService,
         public componentFactoryResolver: ComponentFactoryResolver,
         public viewContainer: ViewContainerRef,
+        public RealTimeService: RealtimeService,
+        private LoginService: LoginService
 
     ) {
 
@@ -74,7 +65,7 @@ export class LayoutMercadoComponent implements OnInit {
         });
         this.RegisterLayoutComponent('Individuo2Component', GridMercadoComponent)
         this.myLayout.init();
-        debugger
+        this.RealTimeService.start(this.LoginService.getLoginSession())
 
         // this.myLayout.updateSize()
         this.CommunicationService.obs_changeSizeWindow.subscribe(() => {
