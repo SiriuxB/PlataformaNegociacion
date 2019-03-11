@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.corredores.com/BVC-IngresoAutomaticoOrdenes" name="BVC-IngresoAutomaticoOrdenes" targetNamespace="http://www.corredores.com/BVC-IngresoAutomaticoOrdenes" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.corredores.com/BVC-IngresoAutomaticoOrdenes">
+      <xsd:include schemaLocation="BVC-IngresoAutomaticoOrdenes.xsd" />
+      <xsd:element name="IngresoAutomaticoOrdenes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IngresoAutomaticoOrdenesInput" nillable="true" type="tns:IngresoAutomaticoOrdenesInput" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IngresoAutomaticoOrdenesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IngresoAutomaticoOrdenesOutput" nillable="true" type="tns:IngresoAutomaticoOrdenesOutput" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IngresoAutomaticoOrdenesResponseMsg">
+    <wsdl:part name="IngresoAutomaticoOrdenesResult" element="tns:IngresoAutomaticoOrdenesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IngresoAutomaticoOrdenesRequestMsg">
+    <wsdl:part name="IngresoAutomaticoOrdenesParámetros" element="tns:IngresoAutomaticoOrdenes" />
+  </wsdl:message>
+  <wsdl:portType name="BVC-IngresoAutomaticoOrdenes">
+    <wsdl:operation name="IngresoAutomaticoOrdenes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Este servicio permite realizar en la Bolsa de Valores de Colombia el ingreso automático de órdenes, así como la modificación o eliminación de una orden colocada en BVC por la firma comisionista. Este invoca el Web Service Service0001 provisto por la BVC.</wsdl:documentation>
+      <wsdl:input name="IngresoAutomaticoOrdenesRequest" message="tns:IngresoAutomaticoOrdenesRequestMsg" />
+      <wsdl:output name="IngresoAutomaticoOrdenesResponse" message="tns:IngresoAutomaticoOrdenesResponseMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

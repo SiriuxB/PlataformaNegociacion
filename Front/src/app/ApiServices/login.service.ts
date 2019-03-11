@@ -10,6 +10,7 @@ import { Usuario } from 'app/models/Usuario';
 import { TokenBuilder } from 'app/Builders/Token.model.builder';
 import { Token } from '@angular/compiler';
 import { BuildHeaderService } from './BuildHeader';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
@@ -20,7 +21,7 @@ export class LoginService {
     private headers: Headers;
     private GetParameterController: string;
     private LoginParametersMethod: string;
-    constructor(private http: Http, public _Router: Router, private HeaderService: BuildHeaderService
+    constructor(private http:HttpClient , public _Router: Router, private HeaderService: BuildHeaderService
     ) {
         this.GetParameterController = '/UserAutenticationGas/';
 
@@ -61,8 +62,8 @@ export class LoginService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params, options)
-            .map(x => x.json())
+        return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params)
+            .map(x => Boolean(x))
             .catch(this.catchError);
 
     }
@@ -76,7 +77,7 @@ export class LoginService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params, options)
+        return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params)
             .map(this.extractBooleanData)
             .catch(this.catchError);
 
@@ -84,9 +85,9 @@ export class LoginService {
 
 
 
-    private extractDataLogin(res: Response) {
-        debugger
-        const LoginAccessRequest: Usuario = res.json()
+    private extractDataLogin(res: any) {
+        
+        const LoginAccessRequest: Usuario = res
         var AuthReturn: boolean = false
         sessionStorage.setItem('currentUser', JSON.stringify(LoginAccessRequest.UserAutentication));
         if (LoginAccessRequest.UserAutentication.access == true) AuthReturn = true
@@ -122,7 +123,7 @@ export class LoginService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(`${AppSettings.Global().EndPoints.API}` + '/Subasta/' + this.LoginParametersMethod, params, options)
+        return this.http.post(`${AppSettings.Global().EndPoints.API}` + '/Subasta/' + this.LoginParametersMethod, params)
             .map(this.extractDataLogin)
             .catch(this.catchError);
 

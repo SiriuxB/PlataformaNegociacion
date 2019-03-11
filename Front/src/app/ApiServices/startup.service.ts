@@ -23,7 +23,6 @@ export class StartupService {
             xobj.onreadystatechange = () => {
                 if (xobj.readyState == 4) {
                     if (xobj.status == 200) {
-                        
                         const Parameters = JSON.parse(xobj.responseText).Firmas[JSON.parse(xobj.responseText).IndexSeleccionado]
                         sessionStorage.setItem("Global", JSON.stringify(Parameters));
                         resolve();

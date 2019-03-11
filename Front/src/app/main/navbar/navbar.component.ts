@@ -8,10 +8,10 @@ import { navigation, navigationAdmin, navigationDirectorDepartamento, navigation
 import { navigationClient } from 'app/navigation/navigation';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { AppSettings } from '../../app.settings';
-import { UserService } from 'app/ApiServices/UserService';
 import { Router } from '@angular/router';
 import { Perfiles } from '../../Enums/Enumerations';
 import { CommunicationService } from 'app/ApiServices/CommunicationService';
+import { LoginService } from 'app/ApiServices/login.service';
 
 @Component({
     selector: 'fuse-navbar',
@@ -41,42 +41,42 @@ export class FuseNavbarComponent implements OnDestroy {
     navigation: any;
     navigationServiceWatcher: Subscription;
     fusePerfectScrollbarUpdateTimeout;
-
+    userService: any
     constructor(
         private sidebarService: FuseSidebarService,
         private navigationService: FuseNavigationService,
-        private userService: UserService,
         private route: Router,
-        private CommunicationService:CommunicationService
+        private LoginService: LoginService,
+        private CommunicationService: CommunicationService
     ) {
         // Navigation data
         //   if (AppSettings.Global().TipoAplicacion == 1) 
         this.navigation = navigationAdmin;
-        if (this.userService.GetCurrentCurrentUserNow() == null) {
+        if (this.LoginService.getLoginSession() == null) {
             this.navigation = navigationAdmin;
         }
         else {
-            if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == 1) {
+            if (this.LoginService.getLoginSession().Roll == 1) {
                 this.navigation = navigationClient;
-            } else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == 2) {
+            } else if (this.LoginService.getLoginSession().Roll  == 2) {
                 this.navigation = navigationAdmin;
             }
-            else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == 3) {
+            else if (this.LoginService.getLoginSession().Roll  == 3) {
                 this.navigation = navigationDirectorDepartamento;
             }
-            else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == 4) {
+            else if (this.LoginService.getLoginSession().Roll  == 4) {
                 this.navigation = navigationIndividuo1;
             }
-            else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == 7) {
+            else if (this.LoginService.getLoginSession().Roll  == 7) {
                 this.navigation = navigatioGerenteSector;
             }
-            else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == Perfiles.AltaGerencia) {
+            else if (this.LoginService.getLoginSession().Roll  == Perfiles.AltaGerencia) {
                 this.navigation = navigationAltaGerencia
             }
-            else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == Perfiles.TransportadorCarro) {
+            else if (this.LoginService.getLoginSession().Roll  == Perfiles.TransportadorCarro) {
                 this.navigation = navigationTransportador
             }
-            else if (this.userService.GetCurrentCurrentUserNow().Id_Perfil == Perfiles.Escrutinio) {
+            else if (this.LoginService.getLoginSession().Roll  == Perfiles.Escrutinio) {
                 this.navigation = navigationEscrutinio
             }
 
@@ -103,13 +103,13 @@ export class FuseNavbarComponent implements OnDestroy {
 
 
     toggleSidebarOpened(key) {
-        
+
         this.sidebarService.getSidebar(key).toggleOpen();
         this.CommunicationService.changeSizeWindow();
     }
 
     toggleSidebarFolded(key) {
-        
+
         this.sidebarService.getSidebar(key).toggleFold();
         this.CommunicationService.changeSizeWindow();
     }

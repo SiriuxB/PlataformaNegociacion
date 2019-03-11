@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Acciones">
+        <s:complexType />
+      </s:element>
+      <s:element name="AccionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccionesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PortafolioCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PortafolioClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortafolioClienteResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MovimientoGrafico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nemotecnico" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MovimientoGraficoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MovimientoGraficoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MovimientoIGBC">
+        <s:complexType />
+      </s:element>
+      <s:element name="MovimientoIGBCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MovimientoIGBCResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MovimientoCOLCAP">
+        <s:complexType />
+      </s:element>
+      <s:element name="MovimientoCOLCAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MovimientoCOLCAPResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MovimientoCOL20">
+        <s:complexType />
+      </s:element>
+      <s:element name="MovimientoCOL20Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MovimientoCOL20Result" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Autenticacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AutenticacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AutenticacionResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtieneCuentasDeceval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtieneCuentasDecevalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtieneCuentasDecevalResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerOrdenesAbiertas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerOrdenesAbiertasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerOrdenesAbiertasResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerOrdenesDia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerOrdenesDiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerOrdenesDiaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPyP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nemotecnico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tiponegocio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPyPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerPyPResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSegmentosComision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoComision" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSegmentosComisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerSegmentosComisionResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerParametrosConfiguracion">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerParametrosConfiguracionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerParametrosConfiguracionResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerCierresPorInstrumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nemotecnico" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerCierresPorInstrumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerCierresPorInstrumentoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudDeCancelación">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idorden" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipoorden" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tiponegocio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudDeCancelaciónResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitudDeCancelaciónResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ColocarOrden">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tiponegocio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipoOrden" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instrumento" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="comision" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechavigencia" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cuentaDeceval" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ipcliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ColocarOrdenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ColocarOrdenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiarContraseña">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevacontrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiarContraseñaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CambiarContraseñaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSaldoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSaldoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerSaldoClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Desconexion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesconexionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesconexionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstaConectado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstaConectadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EstaConectadoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AccionesSoapIn">
+    <wsdl:part name="parameters" element="tns:Acciones" />
+  </wsdl:message>
+  <wsdl:message name="AccionesSoapOut">
+    <wsdl:part name="parameters" element="tns:AccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PortafolioClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:PortafolioCliente" />
+  </wsdl:message>
+  <wsdl:message name="PortafolioClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:PortafolioClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoGraficoSoapIn">
+    <wsdl:part name="parameters" element="tns:MovimientoGrafico" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoGraficoSoapOut">
+    <wsdl:part name="parameters" element="tns:MovimientoGraficoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoIGBCSoapIn">
+    <wsdl:part name="parameters" element="tns:MovimientoIGBC" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoIGBCSoapOut">
+    <wsdl:part name="parameters" element="tns:MovimientoIGBCResponse" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoCOLCAPSoapIn">
+    <wsdl:part name="parameters" element="tns:MovimientoCOLCAP" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoCOLCAPSoapOut">
+    <wsdl:part name="parameters" element="tns:MovimientoCOLCAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoCOL20SoapIn">
+    <wsdl:part name="parameters" element="tns:MovimientoCOL20" />
+  </wsdl:message>
+  <wsdl:message name="MovimientoCOL20SoapOut">
+    <wsdl:part name="parameters" element="tns:MovimientoCOL20Response" />
+  </wsdl:message>
+  <wsdl:message name="AutenticacionSoapIn">
+    <wsdl:part name="parameters" element="tns:Autenticacion" />
+  </wsdl:message>
+  <wsdl:message name="AutenticacionSoapOut">
+    <wsdl:part name="parameters" element="tns:AutenticacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtieneCuentasDecevalSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtieneCuentasDeceval" />
+  </wsdl:message>
+  <wsdl:message name="ObtieneCuentasDecevalSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtieneCuentasDecevalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerOrdenesAbiertasSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerOrdenesAbiertas" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerOrdenesAbiertasSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerOrdenesAbiertasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerOrdenesDiaSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerOrdenesDia" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerOrdenesDiaSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerOrdenesDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPyPSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerPyP" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPyPSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerPyPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSegmentosComisionSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerSegmentosComision" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSegmentosComisionSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerSegmentosComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerParametrosConfiguracionSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerParametrosConfiguracion" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerParametrosConfiguracionSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerParametrosConfiguracionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCierresPorInstrumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerCierresPorInstrumento" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCierresPorInstrumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerCierresPorInstrumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudDeCancelaciónSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitudDeCancelación" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudDeCancelaciónSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitudDeCancelaciónResponse" />
+  </wsdl:message>
+  <wsdl:message name="ColocarOrdenSoapIn">
+    <wsdl:part name="parameters" element="tns:ColocarOrden" />
+  </wsdl:message>
+  <wsdl:message name="ColocarOrdenSoapOut">
+    <wsdl:part name="parameters" element="tns:ColocarOrdenResponse" />
+  </wsdl:message>
+  <wsdl:message name="CambiarContraseñaSoapIn">
+    <wsdl:part name="parameters" element="tns:CambiarContraseña" />
+  </wsdl:message>
+  <wsdl:message name="CambiarContraseñaSoapOut">
+    <wsdl:part name="parameters" element="tns:CambiarContraseñaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSaldoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerSaldoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSaldoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerSaldoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesconexionSoapIn">
+    <wsdl:part name="parameters" element="tns:Desconexion" />
+  </wsdl:message>
+  <wsdl:message name="DesconexionSoapOut">
+    <wsdl:part name="parameters" element="tns:DesconexionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstaConectadoSoapIn">
+    <wsdl:part name="parameters" element="tns:EstaConectado" />
+  </wsdl:message>
+  <wsdl:message name="EstaConectadoSoapOut">
+    <wsdl:part name="parameters" element="tns:EstaConectadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PlataformaWebSoap">
+    <wsdl:operation name="Acciones">
+      <wsdl:input message="tns:AccionesSoapIn" />
+      <wsdl:output message="tns:AccionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PortafolioCliente">
+      <wsdl:input message="tns:PortafolioClienteSoapIn" />
+      <wsdl:output message="tns:PortafolioClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoGrafico">
+      <wsdl:input message="tns:MovimientoGraficoSoapIn" />
+      <wsdl:output message="tns:MovimientoGraficoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoIGBC">
+      <wsdl:input message="tns:MovimientoIGBCSoapIn" />
+      <wsdl:output message="tns:MovimientoIGBCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoCOLCAP">
+      <wsdl:input message="tns:MovimientoCOLCAPSoapIn" />
+      <wsdl:output message="tns:MovimientoCOLCAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoCOL20">
+      <wsdl:input message="tns:MovimientoCOL20SoapIn" />
+      <wsdl:output message="tns:MovimientoCOL20SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Autenticacion">
+      <wsdl:input message="tns:AutenticacionSoapIn" />
+      <wsdl:output message="tns:AutenticacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneCuentasDeceval">
+      <wsdl:input message="tns:ObtieneCuentasDecevalSoapIn" />
+      <wsdl:output message="tns:ObtieneCuentasDecevalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenesAbiertas">
+      <wsdl:input message="tns:ObtenerOrdenesAbiertasSoapIn" />
+      <wsdl:output message="tns:ObtenerOrdenesAbiertasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenesDia">
+      <wsdl:input message="tns:ObtenerOrdenesDiaSoapIn" />
+      <wsdl:output message="tns:ObtenerOrdenesDiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPyP">
+      <wsdl:input message="tns:ObtenerPyPSoapIn" />
+      <wsdl:output message="tns:ObtenerPyPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSegmentosComision">
+      <wsdl:input message="tns:ObtenerSegmentosComisionSoapIn" />
+      <wsdl:output message="tns:ObtenerSegmentosComisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametrosConfiguracion">
+      <wsdl:input message="tns:ObtenerParametrosConfiguracionSoapIn" />
+      <wsdl:output message="tns:ObtenerParametrosConfiguracionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCierresPorInstrumento">
+      <wsdl:input message="tns:ObtenerCierresPorInstrumentoSoapIn" />
+      <wsdl:output message="tns:ObtenerCierresPorInstrumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudDeCancelación">
+      <wsdl:input message="tns:SolicitudDeCancelaciónSoapIn" />
+      <wsdl:output message="tns:SolicitudDeCancelaciónSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ColocarOrden">
+      <wsdl:input message="tns:ColocarOrdenSoapIn" />
+      <wsdl:output message="tns:ColocarOrdenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiarContraseña">
+      <wsdl:input message="tns:CambiarContraseñaSoapIn" />
+      <wsdl:output message="tns:CambiarContraseñaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSaldoCliente">
+      <wsdl:input message="tns:ObtenerSaldoClienteSoapIn" />
+      <wsdl:output message="tns:ObtenerSaldoClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Desconexion">
+      <wsdl:input message="tns:DesconexionSoapIn" />
+      <wsdl:output message="tns:DesconexionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstaConectado">
+      <wsdl:input message="tns:EstaConectadoSoapIn" />
+      <wsdl:output message="tns:EstaConectadoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlataformaWebSoap" type="tns:PlataformaWebSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Acciones">
+      <soap:operation soapAction="http://tempuri.org/Acciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PortafolioCliente">
+      <soap:operation soapAction="http://tempuri.org/PortafolioCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoGrafico">
+      <soap:operation soapAction="http://tempuri.org/MovimientoGrafico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoIGBC">
+      <soap:operation soapAction="http://tempuri.org/MovimientoIGBC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoCOLCAP">
+      <soap:operation soapAction="http://tempuri.org/MovimientoCOLCAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoCOL20">
+      <soap:operation soapAction="http://tempuri.org/MovimientoCOL20" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Autenticacion">
+      <soap:operation soapAction="http://tempuri.org/Autenticacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneCuentasDeceval">
+      <soap:operation soapAction="http://tempuri.org/ObtieneCuentasDeceval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenesAbiertas">
+      <soap:operation soapAction="http://tempuri.org/ObtenerOrdenesAbiertas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenesDia">
+      <soap:operation soapAction="http://tempuri.org/ObtenerOrdenesDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPyP">
+      <soap:operation soapAction="http://tempuri.org/ObtenerPyP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSegmentosComision">
+      <soap:operation soapAction="http://tempuri.org/ObtenerSegmentosComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametrosConfiguracion">
+      <soap:operation soapAction="http://tempuri.org/ObtenerParametrosConfiguracion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCierresPorInstrumento">
+      <soap:operation soapAction="http://tempuri.org/ObtenerCierresPorInstrumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudDeCancelación">
+      <soap:operation soapAction="http://tempuri.org/SolicitudDeCancelación" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ColocarOrden">
+      <soap:operation soapAction="http://tempuri.org/ColocarOrden" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarContraseña">
+      <soap:operation soapAction="http://tempuri.org/CambiarContraseña" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSaldoCliente">
+      <soap:operation soapAction="http://tempuri.org/ObtenerSaldoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desconexion">
+      <soap:operation soapAction="http://tempuri.org/Desconexion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstaConectado">
+      <soap:operation soapAction="http://tempuri.org/EstaConectado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlataformaWebSoap12" type="tns:PlataformaWebSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Acciones">
+      <soap12:operation soapAction="http://tempuri.org/Acciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PortafolioCliente">
+      <soap12:operation soapAction="http://tempuri.org/PortafolioCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoGrafico">
+      <soap12:operation soapAction="http://tempuri.org/MovimientoGrafico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoIGBC">
+      <soap12:operation soapAction="http://tempuri.org/MovimientoIGBC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoCOLCAP">
+      <soap12:operation soapAction="http://tempuri.org/MovimientoCOLCAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovimientoCOL20">
+      <soap12:operation soapAction="http://tempuri.org/MovimientoCOL20" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Autenticacion">
+      <soap12:operation soapAction="http://tempuri.org/Autenticacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneCuentasDeceval">
+      <soap12:operation soapAction="http://tempuri.org/ObtieneCuentasDeceval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenesAbiertas">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerOrdenesAbiertas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenesDia">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerOrdenesDia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPyP">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerPyP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSegmentosComision">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerSegmentosComision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametrosConfiguracion">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerParametrosConfiguracion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCierresPorInstrumento">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerCierresPorInstrumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudDeCancelación">
+      <soap12:operation soapAction="http://tempuri.org/SolicitudDeCancelación" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ColocarOrden">
+      <soap12:operation soapAction="http://tempuri.org/ColocarOrden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarContraseña">
+      <soap12:operation soapAction="http://tempuri.org/CambiarContraseña" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSaldoCliente">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerSaldoCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desconexion">
+      <soap12:operation soapAction="http://tempuri.org/Desconexion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstaConectado">
+      <soap12:operation soapAction="http://tempuri.org/EstaConectado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PlataformaWeb">
+    <wsdl:port name="PlataformaWebSoap" binding="tns:PlataformaWebSoap">
+      <soap:address location="http://localhost/AccionesYValoresWeb/WebServices/PlataformaWeb.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlataformaWebSoap12" binding="tns:PlataformaWebSoap12">
+      <soap12:address location="http://localhost/AccionesYValoresWeb/WebServices/PlataformaWeb.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

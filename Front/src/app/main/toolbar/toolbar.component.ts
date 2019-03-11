@@ -4,9 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
-import { UserService } from '../../ApiServices/UserService';
 import { MatDialog } from '@angular/material';
-import { UserInfoComponent } from '../content/AutenticationComponents/UserInfo/UserInfo.component';
 import { AppSettings } from '../../app.settings';
 
 @Component({
@@ -31,12 +29,11 @@ export class FuseToolbarComponent {
         private fuseConfig: FuseConfigService,
         private sidebarService: FuseSidebarService,
         private translate: TranslateService,
-        private UserService: UserService,
+        //private UserService: UserService,
         private dialog: MatDialog
     ) {
 
-        this.PerfilNow = this.UserService.GetCurrentCurrentUserNow() != null ?
-            this.UserService.GetCurrentCurrentUserNow().Imagen : ""
+     
         this.showFoto = this.PerfilNow == "" ? false : true
         this.showFoto = this.PerfilNow == null ? false : true
         this.userStatusOptions = [
@@ -84,16 +81,6 @@ export class FuseToolbarComponent {
 
         router.events.subscribe(
             (event) => {
-                this.PerfilNow = this.UserService.GetCurrentCurrentUserNow() != null ?
-                    this.UserService.GetCurrentCurrentUserNow().Imagen : ""
-                this.showFoto = this.PerfilNow == "" ? false : true
-                this.showFoto = this.PerfilNow == null ? false : true
-                if (this.UserService.GetCurrentCurrentUserNow() != null) {
-                    //   this.PerfilNow = this.UserService.GetCurrentCurrentUserNow().Imagen
-                    this.Nombres =
-                        AppSettings.Global().TipoAplicacion == 1 ? "" : this.UserService.GetCurrentCurrentUserNow().UserName
-                }
-
 
                 if (event instanceof NavigationStart) {
                     this.showLoadingBar = true;
@@ -128,17 +115,16 @@ export class FuseToolbarComponent {
     }
 
     showUserInfo() {
-        const dialogRef = this.dialog.open(UserInfoComponent, {
-            height: '350px',
-        });
+        // const dialogRef = this.dialog.open(UserInfoComponent, {
+        //     height: '350px',
+        // });
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
-        });
+        // dialogRef.afterClosed().subscribe(result => {
+        //     console.log(`Dialog result: ${result}`);
+        // });
     }
 
     logOut() {
-        this.UserService.ClearCurrentCurrentUserNow()
         this.router.navigate(['/login'])
     }
 }

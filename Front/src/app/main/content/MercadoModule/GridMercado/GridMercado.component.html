@@ -4,6 +4,10 @@
     class="ag-theme-balham-dark"
     [rowData]="rowData" 
     [columnDefs]="columnDefs"
+    [rowClass] = "'classFontGrid'"
+    [rowHeight]="35"
+    [headerHeight]="35"
+    (gridReady)="onGridReady($event)"
     >
 </ag-grid-angular>
 

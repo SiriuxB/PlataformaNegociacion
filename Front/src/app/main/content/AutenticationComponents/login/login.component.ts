@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 import { Router } from '@angular/router';
-import { UserService } from 'app/ApiServices/UserService';
 import { PhotoTool } from 'app/Tools/PhotoTool';
 import { AppSettings } from '../../../../app.settings';
 import { Perfiles } from 'app/Enums/Enumerations';
@@ -29,7 +28,7 @@ export class FuseLoginComponent implements OnInit {
     constructor(
         private fuseConfig: FuseConfigService,
         private formBuilder: FormBuilder,
-        private Router: Router, private UserService: UserService
+        private Router: Router, 
     ) {
         this.fuseConfig.setConfig({
             layout: {
@@ -49,7 +48,6 @@ export class FuseLoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.UserService.ClearCurrentCurrentUserNow()
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required]

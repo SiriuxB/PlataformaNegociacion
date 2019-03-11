@@ -10,16 +10,17 @@ import { licence_ag } from 'app/Tools/licence.agGrid';
     styleUrls: ['GridMercado.component.scss']
 })
 export class GridMercadoComponent implements OnInit {
-   
+
     // Horizontal Stepper
     public gridOptions: GridOptions = {};
+    gridApi: any;
     constructor(
     ) { }
 
     columnDefs = [
-        {headerName: 'Make', field: 'make' },
-        {headerName: 'Model', field: 'model' },
-        {headerName: 'Price', field: 'price'}
+        { headerName: 'Make', field: 'make', headerClass: 'my-css-class' },
+        { headerName: 'Model', field: 'model', headerClass: 'my-css-class' },
+        { headerName: 'Price', field: 'price', headerClass: 'my-css-class' }
     ];
 
     rowData = [
@@ -29,28 +30,33 @@ export class GridMercadoComponent implements OnInit {
     ];
     ngOnInit() {
 
-        LicenseManager.setLicenseKey(licence_ag)
-		this.gridOptions = {
-			rowSelection: 'single',
-			enableColResize: true,
-			enableRangeSelection: true,
-			suppressHorizontalScroll: false,
-			rowData: this.rowData,
-			animateRows: true,
-			columnDefs: this.columnDefs,
-			overlayNoRowsTemplate: ' ',
-			toolPanelSuppressRowGroups: true,
-			toolPanelSuppressValues: true,
-			toolPanelSuppressPivots: true,
-			toolPanelSuppressPivotMode: true,
-			rowHeight: 32,
-		};
+        this.gridOptions = {
+            rowSelection: 'single',
+            enableColResize: true,
+            enableRangeSelection: true,
+            suppressHorizontalScroll: false,
+            rowData: this.rowData,
+            animateRows: true,
+            columnDefs: this.columnDefs,
+            overlayNoRowsTemplate: ' ',
+            toolPanelSuppressRowGroups: true,
+            toolPanelSuppressValues: true,
+            toolPanelSuppressPivots: true,
+            toolPanelSuppressPivotMode: true,
+        };
+        //LicenseManager.setLicenseKey(licence_ag)
+
     }
+    onGridReady(params) {
+        debugger
+        this.gridApi = params.api;
+    }
+
     ReturnPage(event: Event) {
         event.preventDefault();
     }
 
 
-       
+
 }
 

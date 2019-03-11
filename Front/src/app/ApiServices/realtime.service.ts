@@ -37,7 +37,7 @@ export class RealtimeService {
 		}
 		//	AppSettings.Global().SIGNALR "http://localhost/Dataifx.AuctionDesc.Services/signalr"
 
-		this.hubConnection = this.window.$.hubConnection(AppSettings.Global().EndPoints.SIGNALR);
+		this.hubConnection = this.window.$.hubConnection(AppSettings.Global().SIGNALR);
 
 		this.hubProxy = this.hubConnection.createHubProxy('GasHub');
 
@@ -85,12 +85,11 @@ export class RealtimeService {
 	public start(User: UserAutentication): void {
 		this.hubConnection.start()
 			.done((x) => {
-				var Profile = User.Roll
 				const userRealtime = new GasUserHubBuilder()
-					.BuildWithGasProfile(Profile)
-					.BuildWithIdSegas(User.IdSegas)
-					.BuildWithUserName(User.username)
-					.BuildWithName(User.username + " " + User.Empresa)
+					.BuildWithGasProfile(1)
+					.BuildWithIdSegas(1)
+					.BuildWithUserName("User.username")
+					.BuildWithName("jojo")
 					.Build()
 				this.Connect(userRealtime);
 			})

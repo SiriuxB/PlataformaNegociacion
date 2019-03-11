@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:Q1="http://www.corredores.com/BVC-IngresoAutomaticoOrdenes" targetNamespace="http://www.corredores.com/BVC-IngresoAutomaticoOrdenes" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="IngresoAutomaticoOrdenesInput">
+    <xsd:annotation>
+      <xsd:documentation>Información de entrada de la operación invocada</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="PalabraClave" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Palabra clave asociada a la orden (codigo de radicación)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Punta">
+        <xsd:annotation>
+          <xsd:documentation>PUNTA - Tipo de oferta</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="2" />
+            <xsd:enumeration value="5" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Precio" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>PRECIO - Precio de oferta o demanda</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="HoraTransaccion" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Hora de la transaccion</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Tipo">
+        <xsd:annotation>
+          <xsd:documentation>Tipo de orden</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="2" />
+            <xsd:enumeration value="T" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Duracion" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Duración</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Vigencia" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Fecha y hora de vigencia de la orden</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="CantidadMinima" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>MinFillQuantity</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="NumeroCuenta" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Numero de cuenta</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="TipoCuenta">
+        <xsd:annotation>
+          <xsd:documentation>Tipo de Cuenta</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="3" />
+            <xsd:enumeration value="4001" />
+            <xsd:enumeration value="4002" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="AccionEnDesconexion">
+        <xsd:annotation>
+          <xsd:documentation>Accion que se ejecuta cuando el usuario se desconecta</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="2" />
+            <xsd:enumeration value="3" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="TipoSeguimiento">
+        <xsd:annotation>
+          <xsd:documentation>Tipo de precio que se esta siguiendo u oren de seguimiento</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="2" />
+            <xsd:enumeration value="3" />
+            <xsd:enumeration value="4" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="EspecieEnSeguimiento" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Especie que se esta siguiendo</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="RuedaEspecieEnSeguimiento" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Rueda donde esta la especie que se esta siguiendo</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Accion">
+        <xsd:annotation>
+          <xsd:documentation>Acción que se desea realizar con la orden</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="0" />
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="3" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="IdOrden" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>ID de la orden que se desea Modificar o Eliminar</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="IdOrigen" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Este campo se usa para indicar que el campo Id corresponde al identificador de orden que se desea modificar o eliminar</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Parte" type="Q1:Parte" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InstruccionMostrada" type="Q1:InstruccionMostrada" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Instrumento" type="Q1:Instrumento" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="CantidadAcciones" type="Q1:CantidadAcciones" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="PrecioTrigger" type="Q1:PrecioTrigger" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Rendimiento" type="Q1:Rendimiento" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ParametroEstrategico" type="Q1:ParametroEstrategico" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Informacion" type="Q1:Informacion" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Parte">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>PartyID</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Rol" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>PartyRole</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IngresoAutomaticoOrdenesOutput">
+    <xsd:annotation>
+      <xsd:documentation>Información de respuesta de la operacion invocada</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Instrumento" type="Q1:Instrumento" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IdOrden" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>ID asignado a la orden una vez se ha ingresado al sistema de negociación</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="PalabraClave" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Palabra clave asociada a la orden por venta</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Punta">
+        <xsd:annotation>
+          <xsd:documentation>PUNTA - Tipo de oferta</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="2" />
+            <xsd:enumeration value="5" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="EstadoDetalle" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Estado y detalle del estado de la orden</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Accion">
+        <xsd:annotation>
+          <xsd:documentation>Acción que se desea realizar con la orden</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="0" />
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="3" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Error" type="Q1:Error" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Error">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Codigo" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Si no se ha presentado ningun error se informa el nodo codigo igual a cero (0), de lo contrario se informa un código diferente de cero y el nodo descripcion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Descripcion" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Texto descriptivo del error. Si el nodo Codigo es igual a cero (0) el nodo Descripcion no es parte del mensaje.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InstruccionMostrada">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CantidadMostrada" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Cantidad de acciones visible por orden</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Instrumento">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CodigoEspecie" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>NEMOTE - Código de especie a negociar</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TipoMercado">
+        <xsd:annotation>
+          <xsd:documentation>TIPO MERCADO</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CS" />
+            <xsd:enumeration value="OOF" />
+            <xsd:enumeration value="PZFJ" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="IdTablero" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>ID del tablero</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CantidadAcciones">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cantidad" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>CANTOT - Cantidad de acciones</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PrecioTrigger">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Precio" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Precio de Trigger. Precio con el que se publica la accion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Rendimiento">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Rendimiento" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Yield</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ParametroEstrategico">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Nombre" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>StrategyParameterName</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Tipo" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>StrategyParameterType</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Valor" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>StrategyParameterValue</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Informacion">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>InfoID</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Tipo" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>InfoTyp</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

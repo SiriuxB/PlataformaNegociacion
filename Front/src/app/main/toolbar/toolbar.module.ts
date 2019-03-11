@@ -6,13 +6,13 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseToolbarComponent } from 'app/main/toolbar/toolbar.component';
 import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
-import { UserInfoComponent } from 'app/main/content/AutenticationComponents/UserInfo/UserInfo.component';
+//import { UserInfoComponent } from 'app/main/content/AutenticationComponents/UserInfo/UserInfo.component';
 
 @NgModule({
     declarations: [
         FuseToolbarComponent
     ],
-    imports     : [
+    imports: [
         RouterModule,
 
         MatButtonModule,
@@ -26,10 +26,11 @@ import { UserInfoComponent } from 'app/main/content/AutenticationComponents/User
         FuseShortcutsModule,
         MatDialogModule
     ],
-    exports     : [
+    exports: [
         FuseToolbarComponent
-    ],entryComponents : [UserInfoComponent]
+    ], entryComponents: [
+        //    UserInfoComponent
+    ]
 })
-export class FuseToolbarModule
-{
+export class FuseToolbarModule {
 }

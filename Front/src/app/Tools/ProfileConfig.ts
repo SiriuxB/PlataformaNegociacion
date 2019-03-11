@@ -9,7 +9,6 @@ export class ProfileConfig {
         var DataOut: any // get the value of the key pressed and make it lowercase
         let val = texto.toLowerCase();
         // get the amount of columns in the table
-        debugger
         // get the key names of each column in the dataset
         let keys = Object.keys(DataIn[0]);
         let colsAmt = keys.length;

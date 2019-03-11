@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AEC4A1E8-BBD9-4CF4-90B6-CCCFB547A19B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dataifx.AuctionDesc.Infrastructure</RootNamespace>
+    <AssemblyName>Dataifx.AuctionDesc.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.0\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builders\GasLoggerBuilder.cs" />
+    <Compile Include="Builders\AuctionBuilder.cs" />
+    <Compile Include="Comunication\WebApiClient.cs" />
+    <Compile Include="DragDropFrameworkData\CanvasButtonConsumer.cs" />
+    <Compile Include="DragDropFrameworkData\CanvasData.cs" />
+    <Compile Include="DragDropFrameworkData\Class1.cs" />
+    <Compile Include="DragDropFrameworkData\FileDropConsumer.cs" />
+    <Compile Include="DragDropFrameworkData\ListBoxData.cs" />
+    <Compile Include="DragDropFrameworkData\ListBoxToTreeView.cs" />
+    <Compile Include="DragDropFrameworkData\StringToCanvasTextBlock.cs" />
+    <Compile Include="DragDropFrameworkData\TabControlData.cs" />
+    <Compile Include="DragDropFrameworkData\ToolbarButtonToCanvasButton.cs" />
+    <Compile Include="DragDropFrameworkData\ToolBarData.cs" />
+    <Compile Include="DragDropFrameworkData\TrashConsumer.cs" />
+    <Compile Include="DragDropFrameworkData\TreeViewData.cs" />
+    <Compile Include="DragDropFrameworkData\TreeViewToListBox.cs" />
+    <Compile Include="DragDropFramework\DataConsumerBase.cs" />
+    <Compile Include="DragDropFramework\DataProviderBase.cs" />
+    <Compile Include="DragDropFramework\DefaultAdorner.cs" />
+    <Compile Include="DragDropFramework\DragManager.cs" />
+    <Compile Include="DragDropFramework\DropManager.cs" />
+    <Compile Include="DragDropFramework\Utilities.cs" />
+    <Compile Include="Enumerations\ChatMessageStatus.cs" />
+    <Compile Include="Enumerations\ChatMessageType.cs" />
+    <Compile Include="Enumerations\RollSegas.cs" />
+    <Compile Include="Enumerations\LogActionType.cs" />
+    <Compile Include="Enumerations\GasProfile.cs" />
+    <Compile Include="Enumerations\PerfilUsuario.cs" />
+    <Compile Include="Enumerations\MessageStatus.cs" />
+    <Compile Include="Enumerations\ChatStatus.cs" />
+    <Compile Include="Enumerations\IndicatorAlarmcs.cs" />
+    <Compile Include="Enumerations\MarketType.cs" />
+    <Compile Include="Enumerations\TransactionType.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\EntidadBase.cs" />
+    <Compile Include="Models\Ronda.cs" />
+    <Compile Include="Models\Subasta.cs" />
+    <Compile Include="Models\ClosingData.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\GasLog.cs" />
+    <Compile Include="Models\AuctionSummary.cs" />
+    <Compile Include="Models\Auction.cs" />
+    <Compile Include="Models\ChatMessage.cs" />
+    <Compile Include="Models\GasLogSearch.cs" />
+    <Compile Include="Models\GasUserHub.cs" />
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Token.cs" />
+    <Compile Include="Models\Params.cs" />
+    <Compile Include="Models\Purchaser.cs" />
+    <Compile Include="Models\Seller.cs" />
+    <Compile Include="Models\UserAutentication.cs" />
+    <Compile Include="Models\Comprador.cs" />
+    <Compile Include="Models\Demandas.cs" />
+    <Compile Include="Models\Vendedor.cs" />
+    <Compile Include="Modulus\Quote.cs" />
+    <Compile Include="Modulus\Request.cs" />
+    <Compile Include="Modulus\Symbol.cs" />
+    <Compile Include="Modulus\Trade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

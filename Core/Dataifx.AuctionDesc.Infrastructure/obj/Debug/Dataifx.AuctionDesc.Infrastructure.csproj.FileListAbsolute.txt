@@ -1,0 +1,16 @@
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dataifx.AuctionDesc.Infrastructure.dll.config
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dataifx.AuctionDesc.Infrastructure.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dataifx.AuctionDesc.Infrastructure.pdb
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dapper.Contrib.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dapper.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\System.Net.Http.Extensions.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\System.Net.Http.Formatting.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\System.Net.Http.Primitives.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dapper.xml
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csproj.CopyComplete
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.dll
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.pdb
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csprojAssemblyReference.cache

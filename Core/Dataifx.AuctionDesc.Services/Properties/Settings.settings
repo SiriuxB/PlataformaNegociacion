@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Dataifx.AuctionGas.Services.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Dataifx_Trading_Services_WS_BVC_Corredores_BVC_IngresoAutomaticoOrdenesWS_BVC_IngresoAutomaticoOrdenesHttpService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ironman.corredor.local:80/BVC-IngresoAutomaticoOrdenesWeb/sca/BVC-IngresoAutomaticoOrdenesWS</Value>
+    </Setting>
+    <Setting Name="WSDisconnect" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/AVAcciones/WebServices/PlataformaWeb.asmx</Value>
+    </Setting>
+    <Setting Name="oauth_token" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1931197286-T24jznk6md6CXKORIjVRC4MzjGHVIbFrI7uxMId</Value>
+    </Setting>
+    <Setting Name="oauth_token_secret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5BeSJKtLYD68IKKBqb6Fw4CEzSMUrXWnfE6loN3bMg</Value>
+    </Setting>
+    <Setting Name="oauth_consumer_key" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">tSCfnGIEl9OUooa4rj4lAA</Value>
+    </Setting>
+    <Setting Name="oauth_consumer_secret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MGALm2KpU5ZL7Z9AJssvMTFRCxHMUBlwWbiILb6PtBc</Value>
+    </Setting>
+    <Setting Name="Dataifx_Trading_Services_WSDisconnect_PlataformaWeb" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/AccionesYValoresWeb/WebServices/PlataformaWeb.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -19,11 +19,15 @@ export class LayoutMercadoComponent implements OnInit {
     title = 'popout-ex';
 
     config = {
+        dimensions: {
+            headerHeight: 40,
+ 
+        },
         content: [{
             type: 'row',
             content: [{
                 type: 'component',
-                componentName: 'Individuo2Component',
+                componentName: 'MARKET',
                 componentState: { label: 'A' },
 
             }, {
@@ -63,7 +67,7 @@ export class LayoutMercadoComponent implements OnInit {
         this.myLayout.registerComponent('testComponent', function (container, componentState) {
             container.getElement().html('<h2>' + componentState.label + '</h2>');
         });
-        this.RegisterLayoutComponent('Individuo2Component', GridMercadoComponent)
+        this.RegisterLayoutComponent('MARKET', GridMercadoComponent)
         this.myLayout.init();
         this.RealTimeService.start(this.LoginService.getLoginSession())
 

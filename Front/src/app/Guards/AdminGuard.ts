@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { UserService } from '../ApiServices/UserService';
 import { AppSettings } from '../app.settings';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-    constructor(private UserService: UserService,
+    private UserService: any
+    constructor(
         private Router: Router) { }
     canActivate() {
         if (this.UserService.GetCurrentCurrentUserNow() != null) {
