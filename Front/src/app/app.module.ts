@@ -28,6 +28,7 @@ import { appRoutes } from './appRoutes';
 import { RealtimeService, SignalrWindow } from './ApiServices/realtime.service';
 import { LoginService } from './ApiServices/login.service';
 import { BuildHeaderService } from './ApiServices/BuildHeader';
+import { CompraVentaModule } from './main/content/MercadoModule/CompraVenta/CompraVenta.module';
 
 
 
@@ -50,7 +51,7 @@ import { BuildHeaderService } from './ApiServices/BuildHeader';
         LoginModule,
         LayoutMercadoModule,
         GridMercadoModule,
-
+        CompraVentaModule
     ],
     providers: [
         HeaderBuilder

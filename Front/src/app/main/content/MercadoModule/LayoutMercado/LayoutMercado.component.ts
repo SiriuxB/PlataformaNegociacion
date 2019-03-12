@@ -7,6 +7,7 @@ import { CommunicationService } from 'app/ApiServices/CommunicationService';
 import { GridMercadoComponent } from '../GridMercado/GridMercado.component';
 import { RealtimeService } from 'app/ApiServices/realtime.service';
 import { LoginService } from 'app/ApiServices/login.service';
+import { CompraVentaComponent } from '../CompraVenta/CompraVenta.component';
 
 @Component({
     selector: 'LayoutMercado',
@@ -21,21 +22,19 @@ export class LayoutMercadoComponent implements OnInit {
     config = {
         dimensions: {
             headerHeight: 40,
- 
+
         },
         content: [{
             type: 'row',
             content: [{
                 type: 'component',
                 componentName: 'MARKET',
-                componentState: { label: 'A' },
 
             }, {
                 type: 'column',
                 content: [{
                     type: 'component',
-                    componentName: 'testComponent',
-                    componentState: { label: 'B' },
+                    componentName: 'COMPRA VENTA'
 
                 }, {
                     type: 'component',
@@ -65,12 +64,19 @@ export class LayoutMercadoComponent implements OnInit {
         this.myLayout = new GoldenLayout(this.config, $(this.el.nativeElement).find("#layout"));
 
         this.myLayout.registerComponent('testComponent', function (container, componentState) {
-            container.getElement().html('<h2>' + componentState.label + '</h2>');
+            container.getElement().html('<button (click)="jaja()">boton jojojo</button><h2> jojojoj' + componentState.label + '</h2>');
         });
         this.RegisterLayoutComponent('MARKET', GridMercadoComponent)
+        this.RegisterLayoutComponent('COMPRA VENTA', CompraVentaComponent)
+        
         this.myLayout.init();
         this.RealTimeService.start(this.LoginService.getLoginSession())
-
+        debugger
+        var LayoutContainer = this.myLayout as any    
+        var tab1 = LayoutContainer.root.contentItems[0].contentItems[0].header.tabs[0].element
+        tab1.css("font-size", "33px")
+        tab1.css("height", "33px")
+        //header.tabs[0].element.css("font-size", "40px")
         // this.myLayout.updateSize()
         this.CommunicationService.obs_changeSizeWindow.subscribe(() => {
             var x: any = document.querySelector("#layout>div")
@@ -91,5 +97,6 @@ export class LayoutMercadoComponent implements OnInit {
         });
     }
 
+    
 
 }

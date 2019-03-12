@@ -1,0 +1,12 @@
+<div class="containerCV">
+    <div class="compra">COMPRAR</div>
+    <div class="venta">VENDER</div>
+</div>
+-
+<div id="container">
+    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham-dark" [rowData]="rowData"
+        [columnDefs]="columnDefs" [rowClass]="'classFontGrid'" [rowHeight]="35" [headerHeight]="35"
+        (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+
+</div>
