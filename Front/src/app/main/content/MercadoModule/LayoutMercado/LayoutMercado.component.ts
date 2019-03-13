@@ -8,6 +8,7 @@ import { GridMercadoComponent } from '../GridMercado/GridMercado.component';
 import { RealtimeService } from 'app/ApiServices/realtime.service';
 import { LoginService } from 'app/ApiServices/login.service';
 import { CompraVentaComponent } from '../CompraVenta/CompraVenta.component';
+import { InfoUsuarioComponent } from '../../InfoUsuario/InfoUsuario.component';
 
 @Component({
     selector: 'LayoutMercado',
@@ -29,18 +30,17 @@ export class LayoutMercadoComponent implements OnInit {
             content: [{
                 type: 'component',
                 componentName: 'NEGOCIACIONES',
-
+                isClosable: false,
             }, {
                 type: 'column',
                 content: [{
                     type: 'component',
-                    componentName: 'COMPRA VENTA'
-
+                    componentName: 'INFO USUARIO',
+                    isClosable: false,
                 }, {
                     type: 'component',
                     componentName: 'COMPRA VENTA',
-                    componentState: { label: 'C' },
-
+                    isClosable: false,
                 }]
             }]
         }]
@@ -68,10 +68,11 @@ export class LayoutMercadoComponent implements OnInit {
         });
         this.RegisterLayoutComponent('NEGOCIACIONES', GridMercadoComponent)
         this.RegisterLayoutComponent('COMPRA VENTA', CompraVentaComponent)
+        this.RegisterLayoutComponent('INFO USUARIO', InfoUsuarioComponent)
+        
         
         this.myLayout.init();
         this.RealTimeService.start(this.LoginService.getLoginSession())
-        debugger
         // var LayoutContainer = this.myLayout as any    
         // var tab1 = LayoutContainer.root.contentItems[0].contentItems[0].header.tabs[0].element
         // tab1.css("font-size", "20px")

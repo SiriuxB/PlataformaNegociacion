@@ -29,6 +29,7 @@ import { RealtimeService, SignalrWindow } from './ApiServices/realtime.service';
 import { LoginService } from './ApiServices/login.service';
 import { BuildHeaderService } from './ApiServices/BuildHeader';
 import { CompraVentaModule } from './main/content/MercadoModule/CompraVenta/CompraVenta.module';
+import { InfoUsuarioModule } from './main/content/InfoUsuario/InfoUsuario.module';
 
 
 
@@ -51,7 +52,8 @@ import { CompraVentaModule } from './main/content/MercadoModule/CompraVenta/Comp
         LoginModule,
         LayoutMercadoModule,
         GridMercadoModule,
-        CompraVentaModule
+        CompraVentaModule,
+        InfoUsuarioModule
     ],
     providers: [
         HeaderBuilder

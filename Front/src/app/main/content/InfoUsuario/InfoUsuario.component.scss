@@ -1,0 +1,136 @@
+$main-color: #606060;
+.loading{
+    height: 26vh;
+}
+#container-account {
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	font-size: 10px !important;
+	color: white;
+	border: 1px solid lighten(#000, 30%);
+}
+
+.logoAndtitle {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	background-color: $main-color;
+	padding: 0.1em 1em;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+
+h3#title-account {
+	font-weight: bold;
+	color: white;
+}
+#logo {
+	width: 37px;
+    height: 37px;
+	margin-right: 1em;
+	border-radius: 17px;
+	padding: .2em;
+	background: #1c1f25;
+
+}
+
+#logoheader {
+	width: 40%;
+	max-width: 300px;
+	padding: .5em;
+}
+
+.loading md-spinner {
+	max-width: 390px;
+	margin: auto;
+}
+
+.container-info-account {
+
+	& > p {
+		padding: .12em 1em;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
+		        justify-content: space-between;
+		-webkit-transition: -webkit-transform .3s;
+		transition: -webkit-transform .3s;
+		-o-transition: transform .3s;
+		transition: transform .3s;
+		transition: transform .3s, -webkit-transform .3s;
+		will-change: transform;
+
+		&:hover{
+			-webkit-transform: scale(1.02);
+			    -ms-transform: scale(1.02);
+			        transform: scale(1.02);
+		}
+
+		&:not(.infoDataUser) {
+			border-bottom: 1px solid lighten(#000, 50%);
+		}
+
+		&:not(.infoDataUser):nth-child(odd) {
+			background-color: #626262;
+		}
+
+		&:not(.infoDataUser):nth-child(even) {
+			background-color: #3e3c3d;
+		}
+
+	}
+
+	& .infoDataUser {
+		background-color: #121212;
+		position: relative;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+		&:before {
+			content: '';
+			width: 3px;
+			height: 60%;
+			position: absolute;
+			background-color: #fff;
+			left: 5px;
+		}
+	}
+
+}
+
+.container-info {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	padding: 2.5em 0.5em 0.2em;
+	background-color: #272727;
+
+	& md-select {
+		width: 45%;
+	}
+}
+
+.alert-danger {
+	color: #711210;
+	background-color: lightcoral;
+	border-color: red;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}

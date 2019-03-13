@@ -1,0 +1,35 @@
+<div id="container-account">
+
+	<img id="logoheader" [src]="HeaderLogo" *ngIf="ShowHeaderLogo">
+	<div class="container-header">
+
+		<div class="logoAndtitle">
+			<img id="logo" src="assets/images/logos/noticia_informe_sep.png"/>
+			<h4 id="title-account">MI CUENTA</h4>
+		</div>
+
+	</div>
+
+	<div *ngIf="showMessageInfo; then messageTemplate else accountTemplate"></div>
+
+	<ng-template #messageTemplate>
+		<div class="alert-danger alert">
+			{{ messageInfoClient }}
+			<button md-raised-button style="display:block;" (click)="getDataClient()">Intentar Nuevamente.</button>
+		</div>
+	</ng-template>
+
+	<ng-template #accountTemplate style="background: black">
+		<div>
+			<div class="container-info-account">
+				<p class="infoDataUser">Ordenante <span>{{ Name }} -- {{ NameOrd }}</span></p>
+				<p  class="infoDataUser">Cliente <span>{{ client.Id }} -- {{ client.Name }} </span></p>
+				<p  class="infoDataUser">Usuario <span>{{ Username }}</span></p>
+				<p class="infoDataUser">Numero de Cuenta <span>{{ client.Account.MyAccount }}</span></p>
+				
+			</div>
+
+		</div>
+	</ng-template>
+
+</div>
