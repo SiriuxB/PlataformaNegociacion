@@ -1,12 +1,45 @@
-<div class="containerCV">
-    <div class="compra">COMPRAR</div>
-    <div class="venta">VENDER</div>
-</div>
--
-<div id="container">
-    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham-dark" [rowData]="rowData"
-        [columnDefs]="columnDefs" [rowClass]="'classFontGrid'" [rowHeight]="35" [headerHeight]="35"
-        (gridReady)="onGridReady($event)">
-    </ag-grid-angular>
 
-</div>
+
+<main class="mainContainerDemandOfert">
+	<div class="containerHeaderPyP">
+
+		<p class="totalpyp buy" [style.background-color]="DemandColor">
+			Posturas de Venta Vigentes
+		</p>
+
+	
+
+		<p class="totalpyp sell" [style.background-color]="OfferColor">
+			Posturas de Compra Vigentes
+		</p>
+
+	</div>
+
+	<div style="display: flex;  width: 100%; height: calc(100% - 60px)">
+
+		<div style="flex:auto; width:calc(50% / 2);">
+            <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham-dark" [rowData]="rowData"
+            [columnDefs]="columnDefs" [rowClass]="'classFontGrid'" [rowHeight]="35" [headerHeight]="35"
+            (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+
+		</div>
+		<div style="flex:auto; width:calc(50% / 2);">
+            <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham-dark" [rowData]="rowData"
+            [columnDefs]="columnDefs" [rowClass]="'classFontGrid'" [rowHeight]="35" [headerHeight]="35"
+            (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+		</div>
+
+
+	</div>
+
+	<div class="containerHeaderPyP">
+		<p class="totalpyp buy" [style.background-color]="DemandColor">{{totalBuy | number}}</p>
+
+			<!--<span  *ngIf="ShowBidIffertBuyIconVisible" class="icon-cart icon-buysell"  md-mini-fab (click)="BidsOffersBuy()">
+			</span>-->
+
+		<p class="totalpyp sell" [style.background-color]="OfferColor">{{totalSell | number}}</p>
+	</div>
+</main>

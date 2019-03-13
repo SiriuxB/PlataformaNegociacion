@@ -21,14 +21,14 @@ export class LayoutMercadoComponent implements OnInit {
 
     config = {
         dimensions: {
-            headerHeight: 40,
+            headerHeight: 30,
 
         },
         content: [{
             type: 'row',
             content: [{
                 type: 'component',
-                componentName: 'MARKET',
+                componentName: 'NEGOCIACIONES',
 
             }, {
                 type: 'column',
@@ -38,7 +38,7 @@ export class LayoutMercadoComponent implements OnInit {
 
                 }, {
                     type: 'component',
-                    componentName: 'testComponent',
+                    componentName: 'COMPRA VENTA',
                     componentState: { label: 'C' },
 
                 }]
@@ -66,16 +66,16 @@ export class LayoutMercadoComponent implements OnInit {
         this.myLayout.registerComponent('testComponent', function (container, componentState) {
             container.getElement().html('<button (click)="jaja()">boton jojojo</button><h2> jojojoj' + componentState.label + '</h2>');
         });
-        this.RegisterLayoutComponent('MARKET', GridMercadoComponent)
+        this.RegisterLayoutComponent('NEGOCIACIONES', GridMercadoComponent)
         this.RegisterLayoutComponent('COMPRA VENTA', CompraVentaComponent)
         
         this.myLayout.init();
         this.RealTimeService.start(this.LoginService.getLoginSession())
         debugger
-        var LayoutContainer = this.myLayout as any    
-        var tab1 = LayoutContainer.root.contentItems[0].contentItems[0].header.tabs[0].element
-        tab1.css("font-size", "33px")
-        tab1.css("height", "33px")
+        // var LayoutContainer = this.myLayout as any    
+        // var tab1 = LayoutContainer.root.contentItems[0].contentItems[0].header.tabs[0].element
+        // tab1.css("font-size", "20px")
+        // tab1.css("height", "24px")
         //header.tabs[0].element.css("font-size", "40px")
         // this.myLayout.updateSize()
         this.CommunicationService.obs_changeSizeWindow.subscribe(() => {
