@@ -1,0 +1,21 @@
+.example-container {
+	display: flex;
+	flex-direction: column;
+  }
+  .row{
+	display: flex;
+	flex-direction: row;
+  }
+  .example-container {
+	width: 600px;
+	border-color: blue;
+	border: solid;
+	border-width: 1px;
+  }
+  .inputs{
+	WIDTH: 100%;
+	/* PADDING: 0PX; */
+	PADDING-RIGHT: 6PX;
+	PADDING-LEFT: 6PX;
+  }
+  

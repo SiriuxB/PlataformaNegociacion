@@ -30,6 +30,8 @@ import { LoginService } from './ApiServices/login.service';
 import { BuildHeaderService } from './ApiServices/BuildHeader';
 import { CompraVentaModule } from './main/content/MercadoModule/CompraVenta/CompraVenta.module';
 import { InfoUsuarioModule } from './main/content/InfoUsuario/InfoUsuario.module';
+import { BoletaVentaModule } from './main/content/MercadoModule/Boleta-Venta/Boleta-Venta.module';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 
@@ -53,7 +55,10 @@ import { InfoUsuarioModule } from './main/content/InfoUsuario/InfoUsuario.module
         LayoutMercadoModule,
         GridMercadoModule,
         CompraVentaModule,
-        InfoUsuarioModule
+        InfoUsuarioModule,
+        BoletaVentaModule, 
+        OwlDateTimeModule, 
+        OwlNativeDateTimeModule,
     ],
     providers: [
         HeaderBuilder
@@ -66,6 +71,7 @@ import { InfoUsuarioModule } from './main/content/InfoUsuario/InfoUsuario.module
         , LoginService
         , BuildHeaderService
         , { provide: SignalrWindow, useValue: window }]
+
     ,
     bootstrap: [
         AppComponent

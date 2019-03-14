@@ -16,3 +16,33 @@
 @import "assets/css/GoldenLayoutThemes.css";
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham-dark.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+.mat-dialog-container
+{
+    background: black !important;
+}
+.mat-form-field-empty.mat-form-field-label {
+    color: white;
+}
+.mat-form-field-underline {
+    background-color: white;
+}
+.mat-select-value{
+    color: white;
+}
+.mat-select-arrow
+{
+    color: white;
+}
+.mat-form-field-label.mat-input-placeholder.mat-form-field-placeholder{
+    color: white;
+}
+.my-panel .mat-dialog-container {
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 25px;
+    border: 2px solid #1a4579;
+}
+input.mat-input-element{
+    color: white;
+}

@@ -9,6 +9,7 @@ import { RealtimeService } from 'app/ApiServices/realtime.service';
 import { LoginService } from 'app/ApiServices/login.service';
 import { CompraVentaComponent } from '../CompraVenta/CompraVenta.component';
 import { InfoUsuarioComponent } from '../../InfoUsuario/InfoUsuario.component';
+import { AppSettings } from 'app/app.settings';
 
 @Component({
     selector: 'LayoutMercado',
@@ -61,6 +62,7 @@ export class LayoutMercadoComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.config = AppSettings.Global().LayoutConfig
         this.myLayout = new GoldenLayout(this.config, $(this.el.nativeElement).find("#layout"));
 
         this.myLayout.registerComponent('testComponent', function (container, componentState) {
@@ -93,6 +95,8 @@ export class LayoutMercadoComponent implements OnInit {
         });
     }
 
-
+    toConfig() {
+        this.myLayout.toConfig()
+    }
 
 }

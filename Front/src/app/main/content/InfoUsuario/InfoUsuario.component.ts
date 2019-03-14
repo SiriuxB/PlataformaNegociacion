@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LicenseManager } from 'ag-grid-enterprise';
 import { GridOptions } from 'ag-grid-community';
 import { licence_ag } from 'app/Tools/licence.agGrid';
+import { UserAutentication } from 'app/models/UserAutentication';
+import { LoginService } from 'app/ApiServices/login.service';
 
 @Component({
     moduleId: module.id,
@@ -10,45 +12,18 @@ import { licence_ag } from 'app/Tools/licence.agGrid';
     styleUrls: ['InfoUsuario.component.scss']
 })
 export class InfoUsuarioComponent implements OnInit {
-
+    UserAutentication: UserAutentication = new UserAutentication();
     // Horizontal Stepper
     public gridOptions: GridOptions = {};
     gridApi: any;
-    constructor(
+    constructor(private LoginService: LoginService
     ) { }
 
-    columnDefs = [
-        { headerName: 'Make', field: 'make', headerClass: 'my-css-class' },
-        { headerName: 'Model', field: 'model', headerClass: 'my-css-class' },
-        { headerName: 'Price', field: 'price', headerClass: 'my-css-class' }
-    ];
-
-    rowData = [
-        { make: 'Toyota', model: 'Celica', price: 35000 },
-        { make: 'Ford', model: 'Mondeo', price: 32000 },
-        { make: 'Porsche', model: 'Boxter', price: 72000 }
-    ];
     ngOnInit() {
-
-        this.gridOptions = {
-            rowSelection: 'single',
-            enableColResize: true,
-            enableRangeSelection: true,
-            suppressHorizontalScroll: false,
-            rowData: this.rowData,
-            animateRows: true,
-            columnDefs: this.columnDefs,
-            overlayNoRowsTemplate: ' ',
-            toolPanelSuppressRowGroups: true,
-            toolPanelSuppressValues: true,
-            toolPanelSuppressPivots: true,
-            toolPanelSuppressPivotMode: true,
-        };
-        //LicenseManager.setLicenseKey(licence_ag)
+        this.UserAutentication = this.LoginService.getLoginSession()
 
     }
     onGridReady(params) {
-        debugger
         this.gridApi = params.api;
     }
 

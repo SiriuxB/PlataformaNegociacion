@@ -21,6 +21,9 @@ export class AppSettingsBuilder {
 		if (!data.API_ImageContent) { console.log("Parametro API_ImageContent no cargado ") }
 		globalConfig.API_ImageContent = data.API_ImageContent;
 
+		if (!data.API_ImageContent) { console.log("Parametro LayoutConfig no cargado ") }
+		globalConfig.LayoutConfig = data.LayoutConfig;
+		
 
 		return globalConfig;
 	}

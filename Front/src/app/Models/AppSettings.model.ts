@@ -6,7 +6,8 @@ export class AppSettings {
 		API: '',
 		SIGNALR: '',
 		TipoAplicacion: 1,
-		API_ImageContent: ''
+		API_ImageContent: '',
+		LayoutConfig: {}
 	}
 
 

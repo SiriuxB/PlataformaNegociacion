@@ -6,6 +6,7 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseLoginComponent } from './login.component';
+import { infodialogModule } from '@fuse/components/info-dialog/info-dialog.module';
 
 const routes = [
     {
@@ -26,7 +27,7 @@ const routes = [
         MatFormFieldModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        FuseSharedModule
+        FuseSharedModule,infodialogModule
     ]
 })
 export class LoginModule {

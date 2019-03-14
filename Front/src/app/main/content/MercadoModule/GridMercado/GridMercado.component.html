@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container" style="display: flex">
     <ag-grid-angular 
     style="width: 100%; height: 100%;" 
     class="ag-theme-balham-dark"
@@ -10,5 +10,6 @@
     (gridReady)="onGridReady($event)"
     >
 </ag-grid-angular>
-
+<button mat-raised-button class="mat-accent mr-16" (click)="MostrarFormulario()" style="white-space: pre-wrap !important;height: 100%;
+font-size: 11px;">Generar Nueva Oferta</button>
 </div>

@@ -48,7 +48,6 @@ export class CompraVentaComponent implements OnInit {
 
     }
     onGridReady(params) {
-        debugger
         this.gridApi = params.api;
     }
 

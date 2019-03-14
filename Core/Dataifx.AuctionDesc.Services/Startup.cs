@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Dataifx.AuctionDesc.Business.Clases;
 using Dataifx.AuctionDesc.Services;
 using Dataifx.AuctionDesc.Services.RealTime.Gas;
 using Microsoft.AspNet.SignalR;
@@ -53,14 +54,14 @@ namespace Dataifx.AuctionDesc.Services
             ITrigger trigger = TriggerBuilder.Create()
                 .WithIdentity("trigger1", "group1")
                 .StartNow()
-
-                //.WithCronSchedule("0 0/1 * 1/1 * ? *")
-                .WithSimpleSchedule(x => x
-                    .WithIntervalInSeconds(2)
-                    .RepeatForever())
+                .WithCronSchedule("0 0/1 * 1/1 * ? *")
+                //.WithSimpleSchedule(x => x
+                //    .WithIntervalInSeconds(2)
+                //    .RepeatForever())
                 .Build();
 
             scheduler.ScheduleJob(job, trigger);
+            
         }
 
         public class Jobclass : IJob
@@ -69,8 +70,9 @@ namespace Dataifx.AuctionDesc.Services
             public void Execute(IJobExecutionContext context)
             {
                 mensajeria += 1;
+              var x=  BSubasta.VerSubastaActual();
                 var contextHub = GlobalHost.ConnectionManager.GetHubContext<GasHub>();
-                contextHub.Clients.All.onNotificarCambioEnSubasta("hola "+ mensajeria);
+                contextHub.Clients.All.onNotificarCambioEnSubasta(x);
             }
         }
 

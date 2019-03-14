@@ -7,7 +7,7 @@ export class HeaderBuilder {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Userid': UserId == undefined ? btoa("0") : btoa(UserId.toString()),
+              //  'Userid': UserId == undefined ? btoa("0") : btoa(UserId.toString()),
             })
         };
         return httpOptions

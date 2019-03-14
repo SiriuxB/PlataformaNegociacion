@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LicenseManager } from 'ag-grid-enterprise';
 import { GridOptions } from 'ag-grid-community';
 import { licence_ag } from 'app/Tools/licence.agGrid';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { BoletaVentaComponent } from '../Boleta-Venta/Boleta-Venta.component';
 
 @Component({
     moduleId: module.id,
@@ -12,9 +14,10 @@ import { licence_ag } from 'app/Tools/licence.agGrid';
 export class GridMercadoComponent implements OnInit {
 
     // Horizontal Stepper
+    boletaDialog: MatDialogRef<BoletaVentaComponent>;
     public gridOptions: GridOptions = {};
     gridApi: any;
-    constructor(
+    constructor( private Matdialog: MatDialog,
     ) { }
 
     columnDefs = [
@@ -48,7 +51,6 @@ export class GridMercadoComponent implements OnInit {
 
     }
     onGridReady(params) {
-        debugger
         this.gridApi = params.api;
     }
 
@@ -56,7 +58,13 @@ export class GridMercadoComponent implements OnInit {
         event.preventDefault();
     }
 
-
+    MostrarFormulario()
+    {
+        this.boletaDialog = this.Matdialog.open(BoletaVentaComponent, {panelClass: 'my-panel'})     
+        this.boletaDialog.afterClosed().subscribe(result => {
+            //this.ShowDenegateAccess = true
+        })
+    }
 
 }
 

@@ -18,8 +18,8 @@ console.log("conected",arg0)	}
 		this.sub_changeSizeWindow.next(instrument)
 	}
 
-	private sub_onNotificarCambioEnSubasta = new Subject<string>();
-	public obs_onNotificarCambioEnSubasta: Observable<string> = this.sub_onNotificarCambioEnSubasta.asObservable()
+	private sub_onNotificarCambioEnSubasta = new Subject<any>();
+	public obs_onNotificarCambioEnSubasta: Observable<any> = this.sub_onNotificarCambioEnSubasta.asObservable()
 	onNotificarCambioEnSubasta(e: any): any {
 		this.sub_onNotificarCambioEnSubasta.next(e)
 	}

@@ -11,6 +11,7 @@ import { TokenBuilder } from 'app/Builders/Token.model.builder';
 import { Token } from '@angular/compiler';
 import { BuildHeaderService } from './BuildHeader';
 import { HttpClient } from '@angular/common/http';
+import { HeaderBuilder } from 'app/Tools/HeaderBuilder';
 
 
 @Injectable()
@@ -21,24 +22,26 @@ export class LoginService {
     private headers: Headers;
     private GetParameterController: string;
     private LoginParametersMethod: string;
-    constructor(private http:HttpClient , public _Router: Router, private HeaderService: BuildHeaderService
+    constructor(private http:HttpClient , public _Router: Router, private HeaderBuilder: HeaderBuilder
     ) {
         this.GetParameterController = '/UserAutenticationGas/';
 
     }
-    // public SearchToken(tokenStr:string): Observable<boolean> {
-    //     this.LoginParametersMethod = 'SearchToken';
-    //     const Authenticate: boolean = false;
-    //     const TokenAccessRequest = new TokenBuilder().BuildWithToken(tokenStr).Build()
-    //     const params = JSON.stringify(TokenAccessRequest)
-    //     let headers = new Headers();
-    //     headers.append('Content-Type', 'application/json');
-    //     let options = new RequestOptions({ headers: headers });
-    //     return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params, options)
-    //         .map(this.extractData)
-    //         .catch(this.catchError);
+    public SearchToken(tokenStr:string): Observable<boolean> {
+        this.LoginParametersMethod = 'SearchToken';
+        const Authenticate: boolean = false;
+        const TokenAccessRequest = new TokenBuilder().BuildWithToken(tokenStr).Build()
+        const params = JSON.stringify(TokenAccessRequest)
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
 
-    // }
+        
+        const httpOptions = this.HeaderBuilder.HeadNow()
+        return this.http.post(`${AppSettings.Global().API}` + this.GetParameterController + this.LoginParametersMethod
+            , params, httpOptions).map(this.extractDataLogin)
+
+    }
 
 
     public getLoginSession(): UserAutentication {
@@ -86,11 +89,9 @@ export class LoginService {
 
 
     private extractDataLogin(res: any) {
-        
-        const LoginAccessRequest: Usuario = res
         var AuthReturn: boolean = false
-        sessionStorage.setItem('currentUser', JSON.stringify(LoginAccessRequest.UserAutentication));
-        if (LoginAccessRequest.UserAutentication.access == true) AuthReturn = true
+        sessionStorage.setItem('currentUser', JSON.stringify(res));
+        if (res.access == true) AuthReturn = true
         return AuthReturn;
     }
 
