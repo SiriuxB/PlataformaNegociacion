@@ -69,16 +69,11 @@ export class LayoutMercadoComponent implements OnInit {
         this.RegisterLayoutComponent('NEGOCIACIONES', GridMercadoComponent)
         this.RegisterLayoutComponent('COMPRA VENTA', CompraVentaComponent)
         this.RegisterLayoutComponent('INFO USUARIO', InfoUsuarioComponent)
-        
-        
+
+
         this.myLayout.init();
         this.RealTimeService.start(this.LoginService.getLoginSession())
-        // var LayoutContainer = this.myLayout as any    
-        // var tab1 = LayoutContainer.root.contentItems[0].contentItems[0].header.tabs[0].element
-        // tab1.css("font-size", "20px")
-        // tab1.css("height", "24px")
-        //header.tabs[0].element.css("font-size", "40px")
-        // this.myLayout.updateSize()
+        this.CommunicationService.obs_onNotificarCambioEnSubasta.subscribe((x) => console.log(x))
         this.CommunicationService.obs_changeSizeWindow.subscribe(() => {
             var x: any = document.querySelector("#layout>div")
             x.style.height = "100%"
@@ -98,6 +93,6 @@ export class LayoutMercadoComponent implements OnInit {
         });
     }
 
-    
+
 
 }

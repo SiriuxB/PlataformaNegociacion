@@ -1,9 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using Dataifx.AuctionDesc.Services;
+using Dataifx.AuctionDesc.Services.RealTime.Gas;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Owin;
+using Quartz;
+using Quartz.Impl;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -11,6 +17,7 @@ namespace Dataifx.AuctionDesc.Services
 {
     public class Startup
     {
+      
         public void Configuration(IAppBuilder app)
         {
             GlobalHost.Configuration.DefaultMessageBufferSize = 1000;
@@ -35,6 +42,37 @@ namespace Dataifx.AuctionDesc.Services
             //});
             app.MapSignalR();
 
+            EjecutarTareasProgramadas();
         }
+
+        private static void EjecutarTareasProgramadas()
+        {
+            IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
+            scheduler.Start();
+            IJobDetail job = JobBuilder.Create<Jobclass>().Build();
+            ITrigger trigger = TriggerBuilder.Create()
+                .WithIdentity("trigger1", "group1")
+                .StartNow()
+
+                //.WithCronSchedule("0 0/1 * 1/1 * ? *")
+                .WithSimpleSchedule(x => x
+                    .WithIntervalInSeconds(2)
+                    .RepeatForever())
+                .Build();
+
+            scheduler.ScheduleJob(job, trigger);
+        }
+
+        public class Jobclass : IJob
+        {
+            public int mensajeria = 0;
+            public void Execute(IJobExecutionContext context)
+            {
+                mensajeria += 1;
+                var contextHub = GlobalHost.ConnectionManager.GetHubContext<GasHub>();
+                contextHub.Clients.All.onNotificarCambioEnSubasta("hola "+ mensajeria);
+            }
+        }
+
     }
 }

@@ -47,8 +47,8 @@ export class RealtimeService {
 	}
 
 	private SubscribeProxyMethods() {	
-		this.hubProxy.on('onNotifyAditionalOfferAcepted', (e: any) => {
-		//	this.CommunicationService.onNotifyAditionalOfferAcepted(e)
+		this.hubProxy.on('onNotificarCambioEnSubasta', (e: any) => {
+			this.CommunicationService.onNotificarCambioEnSubasta(e)
 		});
 	}
 
@@ -81,6 +81,7 @@ export class RealtimeService {
 		if (this.newState != AppEnumerations.RealTimeConnectionState.Disconnected) { this.CommunicationService.onRealtimeConect(true) }
 		else { this.CommunicationService.onRealtimeConect(false) }
 	}
+
 	/// Events to Server
 	public start(User: UserAutentication): void {
 		this.hubConnection.start()

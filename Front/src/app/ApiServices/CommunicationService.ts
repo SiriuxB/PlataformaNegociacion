@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class CommunicationService {
+
 	onMessageSend(e: boolean): any {
 	}
 	onRealtimeConect(arg0: boolean): any {
@@ -16,5 +17,12 @@ console.log("conected",arg0)	}
 	public changeSizeWindow(instrument?: string) {
 		this.sub_changeSizeWindow.next(instrument)
 	}
+
+	private sub_onNotificarCambioEnSubasta = new Subject<string>();
+	public obs_onNotificarCambioEnSubasta: Observable<string> = this.sub_onNotificarCambioEnSubasta.asObservable()
+	onNotificarCambioEnSubasta(e: any): any {
+		this.sub_onNotificarCambioEnSubasta.next(e)
+	}
+
 
 }
