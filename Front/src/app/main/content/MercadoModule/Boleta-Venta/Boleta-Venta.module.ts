@@ -9,7 +9,9 @@ import { AgGridModule } from 'ag-grid-angular';
 import { BoletaVentaComponent } from './Boleta-Venta.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
-
+import { FormsModule } from '@angular/forms';
+	
+import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
     {
         path: 'BoletaVenta',
@@ -35,7 +37,8 @@ const routes: Routes = [
         FuseConfirmDialogModule,
         MatProgressSpinnerModule,
         OwlDateTimeModule,
-        OwlNativeDateTimeModule
+        OwlNativeDateTimeModule,FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         BoletaVentaComponent,

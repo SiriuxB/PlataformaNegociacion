@@ -3,15 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PhotoTool } from 'app/Tools/PhotoTool';
 import { AppSettings } from '../../../../app.settings';
-import { Perfiles } from 'app/Enums/Enumerations';
 import { LoginService } from 'app/ApiServices/login.service';
 import { infodialogComponent } from '@fuse/components/info-dialog/info-dialog.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
 //import { AppSettings } from '../../../../models/AppSettings.model';
-
+import * as _ from 'lodash';
 
 @Component({
     selector: 'fuse-login',
@@ -33,6 +32,7 @@ export class FuseLoginComponent implements OnInit {
         private fuseConfig: FuseConfigService,
         private formBuilder: FormBuilder,
         private Router: Router,
+        private RouterActive: ActivatedRoute,
         private LoginService: LoginService,
         private Matdialog: MatDialog,
     ) {
@@ -66,12 +66,19 @@ export class FuseLoginComponent implements OnInit {
         //   ;
     }
     ngOnInit() {
+        sessionStorage.removeItem('currentUser')
+        var x = this.RouterActive.root.snapshot.queryParamMap.get("tk")
+        if (_.isNil(x)) {
+            this.IngresoInvalido();
+        }
+        else {
+            this.logInWithTokenExternal(x)
+        }
 
-        //  localStorage.removeItem('currentUser');
-        this.Router.routerState.root.queryParamMap.subscribe(
-            data => this.logInWithTokenExternal(data),
-            errno => console.log(errno)
-        )
+        // this.Router.routerState.root.queryParamMap.subscribe(
+        //     data => this.logInWithTokenExternal(data),
+        //     errno => console.log(errno)
+        // )
         //http://localhost:4200/login?tk=c042e11f-b9d8-4f94-9e98-d95f36345384
 
         /*   var Params :Array<string> = []
@@ -86,22 +93,22 @@ export class FuseLoginComponent implements OnInit {
        */
     }
 
-    private logInWithTokenExternal({ params }: any): void {
-        if (params.tk) {
-            console.log(params.tk)
-            this.LoginService.SearchToken(params.tk)
+    private IngresoInvalido() {
+        this.confirmDialogRef = this.Matdialog.open(infodialogComponent, {});
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Usuario no permitido';
+        this.confirmDialogRef.afterClosed().subscribe(result => {
+        });
+    }
+
+    private logInWithTokenExternal(params: any): void {
+        if (params) {
+            console.log(params)
+            this.LoginService.SearchToken(params)
                 .subscribe(
                     (resp: boolean) => {
                         this.accessHome(resp)
                     },
                 )
-        }
-        else {
-            this.confirmDialogRef = this.Matdialog.open(infodialogComponent, {})
-            this.confirmDialogRef.componentInstance.confirmMessage = 'Usuario no permitido';
-            this.confirmDialogRef.afterClosed().subscribe(result => {
-                //this.ShowDenegateAccess = true
-            })
         }
     }
     /*
@@ -115,13 +122,13 @@ export class FuseLoginComponent implements OnInit {
 
     public accessHome(LoginAccessRequest: boolean) {
         if (LoginAccessRequest == true) {
-            this.User = JSON.parse(localStorage.getItem('currentUser'));
+            this.User = JSON.parse(sessionStorage.getItem('currentUser'));
             if (this.User != undefined) {
                 this.Router.navigate(['/LayoutMercado'])
             }
         }
         else {
-            //this.ShowDenegateAccess = true
+            this.IngresoInvalido();
 
         }
     }

@@ -1,33 +1,57 @@
 <div class="example-container">
-	<h2 style="color: #1a4579">Generar Oferta</h2>
-	<div class="row">
-		<mat-form-field class="inputs">
-			<input matInput placeholder="Input">
-		</mat-form-field>
-		<mat-form-field class="inputs">
-			<input matInput placeholder="Input">
-		</mat-form-field>
+	<h1 style="color: #1976d2">Generar Oferta</h1>
+	<form role="form" name="form" [formGroup]="form">
+		<div class="row">
+			<mat-form-field class="inputs" [floatLabel]="'always'">
+				<input name="Cantidad" formControlName="Cantidad" required [ngModel]="Cantidad" autocomplete="off"
+					[textMask]="{mask: MaskingInt}" matInput placeholder="Cantidad">
+			</mat-form-field>
+			<mat-form-field class="inputs" [floatLabel]="'always'">
+				<input name="Precio" formControlName="Precio" required [ngModel]="Precio" autocomplete="off"
+					[textMask]="{mask: MaskingPrice}" matInput placeholder="Precio">
+				<span style="color: white" matPrefix>$&nbsp;</span>
+			</mat-form-field>
+		</div>
+		<div class="row">
+			<mat-form-field class="inputs" [floatLabel]="'always'">
+				<input matInput placeholder="Fecha Inicio" autocomplete="off">
+			</mat-form-field>
+			<mat-form-field class="inputs" [floatLabel]="'always'" >
+				<input matInput placeholder="Input" autocomplete="off">
+			</mat-form-field>
+		</div>
+		<div class="row">
+			<mat-form-field class="inputs" [floatLabel]="'always'">
+				<input formControlName="FechaInicio" required [ngModel]="FechaInicio" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Fecha Inicio" matInput readonly>
+				<owl-date-time (afterPickerOpen)="cambiarEstiloreloj($event)" style="font-size: 16px" #dt1
+					[pickerMode]="'dialog'"></owl-date-time>
+
+			</mat-form-field>
+			<mat-form-field class="inputs" [floatLabel]="'always'">
+				<input formControlName="FechaFin" required [ngModel]="FechaFin" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Fecha Fin" matInput readonly>
+				<owl-date-time (afterPickerOpen)="cambiarEstiloreloj($event)" style="font-size: 16px" #dt2
+					[pickerMode]="'dialog'"></owl-date-time>
+
+			</mat-form-field>
+
+		</div>
+		<div class="row">
+			<mat-form-field class="inputs" [floatLabel]="'always'">
+				<mat-select (change)="jojo(form)" formControlName="ProductoSeleccionado" required [ngModel]="ProductoSeleccionado"
+					name="ProductoSeleccionado" [(ngModel)]="ProductoSeleccionado" placeholder="Tipo de producto">
+					<mat-option *ngFor="let item of Productos" [value]="item.Id">
+						{{item.Descripcion}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</form>
+	<div mat-dialog-actions class="pt-24">
+		<button mat-raised-button class="mat-accent mr-16" (click)="dialogRef.close(true)"
+			[disabled]="form.invalid">Aceptar</button>
+		<button mat-raised-button class="mat-accent mr-16" (click)="dialogRef.close(false)">Cancelar</button>
 	</div>
-	<div class="row">
-		<mat-form-field class="inputs">
-			<input matInput placeholder="Input">
-		</mat-form-field>
-		<mat-form-field class="inputs">
-			<input matInput placeholder="Input">
-		</mat-form-field>
-	</div>
-	<div class="row">
-		<mat-form-field class="inputs">
-				<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time"   matInput readonly>
-		</mat-form-field>
-	
-		<owl-date-time (afterPickerOpen)="cambiarEstiloreloj($event)" style="font-size: 16px" #dt1 [pickerMode]="'dialog'"></owl-date-time>
-	</div>
-	<mat-form-field>
-		<mat-select placeholder="Select">
-			<mat-option value="option">Option</mat-option>
-		</mat-select>
-	</mat-form-field>
+
 </div>
 <!--	<div style="width:450px;" [style.display]="grphDisplay">
 					<graph-instrument style="flex:auto;" [instrument]="dataOrder.Mnemonic || dataOrder.Especie"></graph-instrument>

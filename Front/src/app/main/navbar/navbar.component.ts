@@ -9,7 +9,6 @@ import { navigationClient } from 'app/navigation/navigation';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { AppSettings } from '../../app.settings';
 import { Router } from '@angular/router';
-import { Perfiles } from '../../Enums/Enumerations';
 import { CommunicationService } from 'app/ApiServices/CommunicationService';
 import { LoginService } from 'app/ApiServices/login.service';
 
@@ -70,17 +69,7 @@ export class FuseNavbarComponent implements OnDestroy {
             else if (this.LoginService.getLoginSession().Roll  == 7) {
                 this.navigation = navigatioGerenteSector;
             }
-            else if (this.LoginService.getLoginSession().Roll  == Perfiles.AltaGerencia) {
-                this.navigation = navigationAltaGerencia
-            }
-            else if (this.LoginService.getLoginSession().Roll  == Perfiles.TransportadorCarro) {
-                this.navigation = navigationTransportador
-            }
-            else if (this.LoginService.getLoginSession().Roll  == Perfiles.Escrutinio) {
-                this.navigation = navigationEscrutinio
-            }
-
-
+           
 
         }
 

@@ -18,4 +18,6 @@
 	PADDING-RIGHT: 6PX;
 	PADDING-LEFT: 6PX;
   }
-  
+  .datepickerHover{
+		cursor: pointer;
+	}

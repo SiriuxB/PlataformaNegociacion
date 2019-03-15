@@ -15,12 +15,25 @@ export module AppEnumerations {
         Finalizada = 4,
         Clausurada = 5
     }
-    export enum TipoSubasta {
-        C1 = 21,
-        C2 = 22,
-        C2Auditoria = 26,
-        C2Equipogas = 28,
-    }
+    export var Productos = []
+    Productos.push(
+        {
+            Descripcion: "C1",
+            Id: 21
+        },
+        {
+            Descripcion: "C2",
+            Id: 22
+        },
+        {
+            Descripcion: "Transporte",
+            Id: 23
+        },
+        {
+            Descripcion: "Rutas",
+            Id: 24
+        },
+    )
 
     export enum ParametrosEnum {
         LimiteInferiorPrecioComprador = 1,
