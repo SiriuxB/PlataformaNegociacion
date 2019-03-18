@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using Dataifx.AuctionDesc.Business.Clases;
 using Dataifx.AuctionDesc.Infrastructure.Models;
 using Dataifx.AuctionDesc.Services.Models;
 
@@ -38,6 +39,35 @@ namespace Dataifx.AuctionDesc.Services.Controllers
             UserAutentication token = Instance.SearchToken(tokenObj);
             return token;
         }
+
+        [HttpPost]
+        public bool VerificarUsuarioCreado(UserAutentication user)
+        {
+            bool token = Instance.VerificarUsuarioCreado(user);
+            return token;
+        }
+
+        [HttpPost]
+        public bool VerificarUsuarioActivo(UserAutentication user)
+        {
+            bool token = Instance.VerificarUsuarioActivo(user);
+            return token;
+        }
+
+        [HttpPost]
+        public UserAutentication CrearUsuario(UserAutentication user)
+        {
+            return Instance.CrearUsuario(user);
+
+        }
+
+        [HttpPost]
+        public Usuario ActivarUsuario(Usuario entidad)
+        {
+            return BSubasta.ActivarUsuario(entidad);
+
+        }
+
 
     }
 }

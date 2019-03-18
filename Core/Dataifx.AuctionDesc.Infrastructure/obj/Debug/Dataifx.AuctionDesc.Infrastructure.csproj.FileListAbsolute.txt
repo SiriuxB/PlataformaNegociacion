@@ -13,7 +13,6 @@ D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastru
 D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csproj.CopyComplete
 D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.dll
 D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.pdb
-D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csprojAssemblyReference.cache
 D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dataifx.AuctionDesc.Infrastructure.dll.config
 D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dataifx.AuctionDesc.Infrastructure.dll
 D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\bin\Debug\Dataifx.AuctionDesc.Infrastructure.pdb
@@ -30,3 +29,4 @@ D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\D
 D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csproj.CopyComplete
 D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.dll
 D:\Proyectos\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.pdb
+D:\Capacitaciones\temps\PlataformaNegociacion\Core\Dataifx.AuctionDesc.Infrastructure\obj\Debug\Dataifx.AuctionDesc.Infrastructure.csprojAssemblyReference.cache

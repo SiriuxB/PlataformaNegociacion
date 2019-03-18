@@ -168,9 +168,9 @@ namespace Dataifx.AuctionDesc.Services.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<Usuario> VerUsuarios(Usuario entidad)
+        public IEnumerable<Usuario> VerUsuarios()
         {
-            return BSubasta.VerUsuarios(entidad);
+            return BSubasta.VerUsuarios();
 
         }
         [HttpPost]
@@ -179,18 +179,7 @@ namespace Dataifx.AuctionDesc.Services.Controllers
             return BSubasta.VerUsuario(entidad);
 
         }
-        [HttpPost]
-        public Usuario GuardarUsuario(Usuario entidad)
-        {
-            return BSubasta.GuardarUsuario(entidad);
-        }
-        [HttpPost]
-        public Usuario LoginNow(Usuario entidad)
-        {
-            return BSubasta.LoginNow(entidad);
-
-        }
-
+       
         [HttpPost]
         public IEnumerable<Roles> VerRoles()
         {

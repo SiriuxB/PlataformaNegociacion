@@ -81,6 +81,10 @@ namespace Dataifx.AuctionDesc.Business.Clases
                     User.password = dtSearch.Rows[0]["PasswordUser"].ToString();
                     User.IdSegas = dtSearch.Rows[0]["UserId"] == DBNull.Value ? 0 : Convert.ToInt32(dtSearch.Rows[0]["UserId"]); ;
                     User = DataUser.ValidateUser(User);
+                    var usuario = new Usuario { NombreUsuario = User.username };
+                    usuario = DataUser.LoginNow(usuario);
+                    User.Id = usuario?.Id ?? 0;
+                    User.Activo = usuario?.Activo ?? false;
                 }
                 return User;
             }
@@ -93,7 +97,60 @@ namespace Dataifx.AuctionDesc.Business.Clases
 
         }
 
-      
+
+        public static bool VerificarUsuarioCreado(UserAutentication user)
+        {
+            bool respuesta = false;
+            try
+            {
+                respuesta = DataUser.VerificarUsuarioCreado(user);
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+
+                GasLogB.CrearLogError(ex);
+            }
+            return respuesta;
+
+        }
+
+        public static bool VerificarUsuarioActivo(UserAutentication user)
+        {
+            bool respuesta = false;
+            try
+            {
+                respuesta = DataUser.VerificarUsuarioActivo(user);
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+
+                GasLogB.CrearLogError(ex);
+            }
+            return respuesta;
+
+        }
+
+
+        public static UserAutentication CrearUsuario(UserAutentication user)
+        {
+            int respuesta = 0;
+            try
+            {
+                respuesta = DataUser.CrearUsuario(user);
+                user.Id = respuesta;
+                return user;
+            }
+            catch (Exception ex)
+            {
+
+                GasLogB.CrearLogError(ex);
+            }
+            return user;
+        }
     }
 
 }

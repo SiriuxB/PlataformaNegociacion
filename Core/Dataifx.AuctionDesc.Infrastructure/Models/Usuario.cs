@@ -12,15 +12,14 @@ namespace Dataifx.AuctionDesc.Infrastructure.Models
         [Key]
         public int Id { get; set; }
 
-        public string Nombre { get; set; }
-        public string Password { get; set; }
+        public int IdSegas { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Nombre { get; set; }       
+        public string Empresa { get; set; }
         public int Rol { get; set; }
-        public string UserName { get; set; }
-        public DateTime FechaModificacion { get; set; }
         public bool Activo { get; set; }
         [Computed]
         public string NombreRol { get; set; }
-        
     }
 
 }

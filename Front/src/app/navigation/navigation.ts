@@ -68,99 +68,21 @@ export const navigationAdmin = [
         'type': 'group',
         'children': [
             {
-                'id': 'tipoevento',
-                'title': 'Tipo Evento',
+                'id': 'Participantes',
+                'title': 'Participantes',
                 'translate': 'NAV.SAMPLE.TITLE',
                 'type': 'item',
                 'icon': 'map',
-                'url': '/tipoevento',
+                'url': '/Participantes',
             },
-            {
-                'id': 'aceptimage',
-                'title': 'Aprobar Imagenes',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/aceptimage',
-            },
-            {
-                'id': 'paramsectores',
-                'title': 'Sectores',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/sector',
-            },
-         
-            {
-                'id': 'zonaelectoral',
-                'title': 'Zona Electoral',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/zonaelectoral',
-            },
-            {
-                'id': 'puestovotacion',
-                'title': 'Puesto de Votacion',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/puestovotacion',
-            },
-            {
-                'id': 'mesa',
-                'title': 'Mesas',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/mesa',
-            },
-             {
-                'id': 'gerentesector',
-                'title': 'Gerente de Sector',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/gerentesector',
-            },
-            {
-                'id': 'SacIndividuo2',
-                'title': 'Aprobar Estructura SAC',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/SacIndividuo2',
-            },
-            {
-                'id': 'MetasCall',
-                'title': 'Metas CallCenter',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/MetasCall',
-            },
-            {
-                'id': 'Llamadas',
-                'title': 'Llamadas CallCenter',
-                'translate': 'NAV.SAMPLE.TITLE',
-                'type': 'item',
-                'icon': 'map',
-                'url': '/Llamadas',
-            },
-            
-            
-
-
             {
                 'id': 'Salir',
                 'title': 'Salir',
                 'translate': 'NAV.SAMPLE.TITLE',
                 'type': 'item',
                 'icon': 'input',
-                'url': '/login',
+                'url': 'https://www.bolsamercantil.com.co',
             },
-            
             
             
             

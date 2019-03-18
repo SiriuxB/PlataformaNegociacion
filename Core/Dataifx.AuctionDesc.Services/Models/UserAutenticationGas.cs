@@ -19,5 +19,21 @@ namespace Dataifx.AuctionDesc.Services.Models
         {
             return UserGas.SearchToken(tokenObj);
         }
+        public bool VerificarUsuarioCreado(UserAutentication user)
+        {
+            return UserGas.VerificarUsuarioCreado(user);
+        }
+
+        public bool VerificarUsuarioActivo(UserAutentication user)
+        {
+            return UserGas.VerificarUsuarioActivo(user);
+        }
+
+        public UserAutentication CrearUsuario(UserAutentication user)
+        {
+            return UserGas.CrearUsuario(user);
+        }
+        
+
     }
 }

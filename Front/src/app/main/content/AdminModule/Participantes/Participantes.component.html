@@ -1,0 +1,26 @@
+<div _ngcontent-c87="" class="page-layout simple fullwidth" style="color:white;background-color: #020f23">
+    <div _ngcontent-c87="" class="header warm p-24" fxlayout="row" fxlayoutalign="start center"
+
+        style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center flex-start; align-items: center; background-color: #1976d2">
+        <h2 style="color:white">Participantes</h2>
+    </div>
+    <div  class="content p-24">
+
+        <div _ngcontent-c78="" class="demo-content line-height-1.75" >
+            <div id="container" style="display: flex">
+                <ag-grid-angular 
+                style="width: 100%; height: 100%;" 
+                class="ag-theme-balham-dark"
+                [rowData]="rowData" 
+                [columnDefs]="columnDefs"
+                [rowClass] = "'classFontGrid'"
+                [rowHeight]="30"
+                [headerHeight]="35"
+                (gridReady)="onGridReady($event)"
+                [frameworkComponents]="frameworkComponents"
+                >
+            </ag-grid-angular>
+        </div>
+
+    </div>
+</div>

@@ -11,6 +11,9 @@ import { infodialogComponent } from '@fuse/components/info-dialog/info-dialog.co
 import { MatDialogRef, MatDialog } from '@angular/material';
 //import { AppSettings } from '../../../../models/AppSettings.model';
 import * as _ from 'lodash';
+import { UserAutentication } from 'app/models/UserAutentication';
+import { AppEnumerations } from 'app/enumerations/appEnumerations';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'fuse-login',
@@ -26,8 +29,10 @@ export class FuseLoginComponent implements OnInit {
     loginForm: FormGroup;
     loginFormErrors: any;
     public jey: string;
-    User: any;
+    User: UserAutentication;
     confirmDialogRef: MatDialogRef<infodialogComponent>;
+    confirmDialogRefConfirm: MatDialogRef<FuseConfirmDialogComponent>;
+
     constructor(
         private fuseConfig: FuseConfigService,
         private formBuilder: FormBuilder,
@@ -69,7 +74,7 @@ export class FuseLoginComponent implements OnInit {
         sessionStorage.removeItem('currentUser')
         var x = this.RouterActive.root.snapshot.queryParamMap.get("tk")
         if (_.isNil(x)) {
-            this.IngresoInvalido();
+            this.MostrarMensaje("Usuario no permitido", true);
         }
         else {
             this.logInWithTokenExternal(x)
@@ -93,10 +98,13 @@ export class FuseLoginComponent implements OnInit {
        */
     }
 
-    private IngresoInvalido() {
+    private MostrarMensaje(mensaje: string, expulsar: boolean = false) {
         this.confirmDialogRef = this.Matdialog.open(infodialogComponent, {});
-        this.confirmDialogRef.componentInstance.confirmMessage = 'Usuario no permitido';
+        this.confirmDialogRef.componentInstance.confirmMessage = mensaje;
         this.confirmDialogRef.afterClosed().subscribe(result => {
+            if (expulsar) {
+                window.location.replace("https://www.bolsamercantil.com.co");
+            }
         });
     }
 
@@ -123,15 +131,54 @@ export class FuseLoginComponent implements OnInit {
     public accessHome(LoginAccessRequest: boolean) {
         if (LoginAccessRequest == true) {
             this.User = JSON.parse(sessionStorage.getItem('currentUser'));
-            if (this.User != undefined) {
-                this.Router.navigate(['/LayoutMercado'])
+            debugger
+            if (this.User.Activo) {
+                this.RedirigirPerfil(this.User.Roll);
+            } else if (this.User.Roll == AppEnumerations.GasProfile.Administrador || this.User.Roll == AppEnumerations.GasProfile.Subastador) {
+                this.User.Activo = true;
+                this.LoginService.CrearUsuario(this.User).subscribe(x => {
+                    if (x.Id > 0) {
+                        sessionStorage.setItem('currentUser', JSON.stringify(this.User))
+                        this.RedirigirPerfil(this.User.Roll);
+                    }
+                })
+            }
+            else if (this.User.Id == 0 && (this.User.Roll == AppEnumerations.GasProfile.Comprador || this.User.Roll == AppEnumerations.GasProfile.Vendedor)) {
+
+                this.confirmDialogRefConfirm = this.Matdialog.open(FuseConfirmDialogComponent, {});
+                this.confirmDialogRefConfirm.componentInstance.confirmMessage = AppSettings.Global().MensajeNoregistrado;
+                this.confirmDialogRefConfirm.afterClosed().subscribe(result => {
+                    if (result) {
+                        this.LoginService.CrearUsuario(this.User).subscribe(x => {
+                            if (x) {
+                                this.MostrarMensaje(AppSettings.Global().MensajeAprobacion, true)
+                            }
+                            else {
+                                window.location.replace("https://www.bolsamercantil.com.co");
+                            }
+                        })
+                    }
+                    else {
+                        window.location.replace("https://www.bolsamercantil.com.co");
+                    }
+                });
+            } else if (this.User.Id > 0 && this.User.Activo == false && (this.User.Roll == AppEnumerations.GasProfile.Comprador || this.User.Roll == AppEnumerations.GasProfile.Vendedor)) {
+                this.MostrarMensaje(AppSettings.Global().MensajeAprobacion, true)
             }
         }
-        else {
-            this.IngresoInvalido();
 
+
+
+
+    }
+    private RedirigirPerfil(Roll) {
+        if (Roll == AppEnumerations.GasProfile.Administrador || Roll == AppEnumerations.GasProfile.Subastador) {
+            this.Router.navigate(['/Participantes']);
+        } else if (Roll == AppEnumerations.GasProfile.Comprador || Roll == AppEnumerations.GasProfile.Vendedor) {
+            this.Router.navigate(['/LayoutMercado']);
         }
     }
+
     returnLogin() {
         // localStorage.clear()
         sessionStorage.clear()

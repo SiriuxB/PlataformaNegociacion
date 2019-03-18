@@ -11,6 +11,7 @@ import { AppSettings } from '../../app.settings';
 import { Router } from '@angular/router';
 import { CommunicationService } from 'app/ApiServices/CommunicationService';
 import { LoginService } from 'app/ApiServices/login.service';
+import { AppEnumerations } from 'app/enumerations/appEnumerations';
 
 @Component({
     selector: 'fuse-navbar',
@@ -55,9 +56,9 @@ export class FuseNavbarComponent implements OnDestroy {
             this.navigation = navigationAdmin;
         }
         else {
-            if (this.LoginService.getLoginSession().Roll == 1) {
-                this.navigation = navigationClient;
-            } else if (this.LoginService.getLoginSession().Roll  == 2) {
+            if (this.LoginService.getLoginSession().Roll == AppEnumerations.GasProfile.Subastador) {
+                this.navigation = navigationAdmin;
+            } else if (this.LoginService.getLoginSession().Roll  == AppEnumerations.GasProfile.Administrador ) {
                 this.navigation = navigationAdmin;
             }
             else if (this.LoginService.getLoginSession().Roll  == 3) {
@@ -69,7 +70,7 @@ export class FuseNavbarComponent implements OnDestroy {
             else if (this.LoginService.getLoginSession().Roll  == 7) {
                 this.navigation = navigatioGerenteSector;
             }
-           
+       
 
         }
 

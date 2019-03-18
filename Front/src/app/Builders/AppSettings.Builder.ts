@@ -23,6 +23,12 @@ export class AppSettingsBuilder {
 
 		if (!data.API_ImageContent) { console.log("Parametro LayoutConfig no cargado ") }
 		globalConfig.LayoutConfig = data.LayoutConfig;
+
+		if (!data.MensajeAprobacion) { console.log("Parametro MensajeAprobacion no cargado ") }
+		globalConfig.MensajeAprobacion = data.MensajeAprobacion;
+			
+		if (!data.MensajeNoregistrado) { console.log("Parametro MensajeNoregistrado no cargado ") }
+		globalConfig.MensajeNoregistrado = data.MensajeNoregistrado;
 		
 
 		return globalConfig;

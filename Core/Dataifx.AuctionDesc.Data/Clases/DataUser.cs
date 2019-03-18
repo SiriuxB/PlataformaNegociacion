@@ -63,7 +63,7 @@ namespace Dataifx.AuctionDesc.Data.Clases
                         || userobj.CodigoGrupoUsuario == (int)RollSegas.OperadorBmc1
                         || userobj.CodigoGrupoUsuario == (int)RollSegas.OperadorBmc2)
                         {
-                            userobj.Roll = (int)GasProfile.Subastador;
+                            userobj.Roll = (int)GasProfile.Administrador;
                         }
                         if (userobj.CodigoGrupoUsuario == (int)RollSegas.Subastador)
                         {
@@ -189,7 +189,7 @@ namespace Dataifx.AuctionDesc.Data.Clases
         {
             List<Usuario> lista = new List<Usuario>();
             var roles = VerRoles();
-            var sqlObtener = "Select * from  Usuario";
+            var sqlObtener = "Select * from  Usuario where Rol <> 0 and Rol <> 1 ";
             Database db = DatabaseFactory.CreateDatabase("Auction");
             using (var connection = new SqlConnection(db.ConnectionString))
             {
@@ -226,36 +226,22 @@ namespace Dataifx.AuctionDesc.Data.Clases
 
         public static Usuario GuardarUsuario(Usuario entidad)
         {
+            return new Usuario();
+            //var sql = "INSERT into Usuario (FechaModificacion,Nombre,UserName,Password,Rol,Activo) values(@FechaModificacion,@Nombre,@UserName,@Password,@Rol,@Activo);" +
+            //         "SELECT @@IDENTITY";
 
-            var sql = "INSERT into Usuario (FechaModificacion,Nombre,UserName,Password,Rol,Activo) values(@FechaModificacion,@Nombre,@UserName,@Password,@Rol,@Activo);" +
-                     "SELECT @@IDENTITY";
 
+            //Database db = DatabaseFactory.CreateDatabase("Auction");
+            //using (var connection = new SqlConnection(db.ConnectionString))
+            //{
+            //    var x = connection.ExecuteScalar(sql, new { FechaModificacion = DateTime.Now, entidad.Nombre, entidad.UserName, entidad.Password, entidad.Rol, entidad.Activo });
+            //    entidad.Id = Convert.ToInt32(x);
+            //    return entidad;
 
-            Database db = DatabaseFactory.CreateDatabase("Auction");
-            using (var connection = new SqlConnection(db.ConnectionString))
-            {
-                var x = connection.ExecuteScalar(sql, new { FechaModificacion = DateTime.Now, entidad.Nombre, entidad.UserName, entidad.Password, entidad.Rol, entidad.Activo });
-                entidad.Id = Convert.ToInt32(x);
-                return entidad;
-
-            }
+            //}
         }
 
-        public static Usuario ActualizarUsuario(Usuario entidad)
-        {
 
-            var sql = "UPDATE Usuario SET FechaModificacion = @FechaModificacion ,Nombre = @Nombre ,UserName = @UserName ,Password = @Password,Rol = @Rol,Activo = @Activo WHERE Id = @Id ;" +
-                     "SELECT @@IDENTITY";
-
-
-            Database db = DatabaseFactory.CreateDatabase("Auction");
-            using (var connection = new SqlConnection(db.ConnectionString))
-            {
-                var x = connection.ExecuteScalar(sql, new { FechaModificacion = DateTime.Now, entidad.Nombre, entidad.UserName, entidad.Password, entidad.Rol, entidad.Activo, entidad.Id });
-                return entidad;
-
-            }
-        }
 
         public static Usuario VerUsuario(Usuario entidad)
         {
@@ -270,11 +256,11 @@ namespace Dataifx.AuctionDesc.Data.Clases
 
         public static Usuario LoginNow(Usuario entidad)
         {
-            var sqlObtener = "Select * from  Usuario WHERE UserName = @UserName";
+            var sqlObtener = "Select * from  Usuario WHERE [NombreUsuario] = @NombreUsuario";
             Database db = DatabaseFactory.CreateDatabase("Auction");
             using (var connection = new SqlConnection(db.ConnectionString))
             {
-                var x = connection.Query<Usuario>(sqlObtener, new { entidad.UserName }).FirstOrDefault();
+                var x = connection.Query<Usuario>(sqlObtener, new { entidad.NombreUsuario }).FirstOrDefault();
                 return x;
             }
         }
@@ -287,6 +273,56 @@ namespace Dataifx.AuctionDesc.Data.Clases
             {
                 var x = connection.Query<Roles>(sqlObtener).ToList();
                 return x;
+            }
+        }
+
+        public static bool VerificarUsuarioCreado(UserAutentication user)
+        {
+            var sqlObtener = "Select * from  Usuario WHERE IdSegas = @IdSegas";
+            Database db = DatabaseFactory.CreateDatabase("Auction");
+            using (var connection = new SqlConnection(db.ConnectionString))
+            {
+                var x = connection.Query<Usuario>(sqlObtener).ToList();
+                return x.Any();
+            }
+        }
+
+        public static bool VerificarUsuarioActivo(UserAutentication user)
+        {
+            var sqlObtener = "Select * from  Usuario WHERE IdSegas = @IdSegas and Activo = 1";
+            Database db = DatabaseFactory.CreateDatabase("Auction");
+            using (var connection = new SqlConnection(db.ConnectionString))
+            {
+                var x = connection.Query<Usuario>(sqlObtener).ToList();
+                return x.Any();
+            }
+        }
+
+        public static int CrearUsuario(UserAutentication user)
+        {
+            var sqlObtener = "INSERT INTO [dbo].[Usuario]([IdSegas],[NombreUsuario],[Empresa],[Rol],[Activo],[Nombre]) VALUES(@IdSegas,@NombreUsuario,@Empresa,@Rol,@Activo,@Nombre);" +
+                             "SELECT @@IDENTITY";
+
+            Database db = DatabaseFactory.CreateDatabase("Auction");
+            using (var connection = new SqlConnection(db.ConnectionString)) //user.username
+            {
+                var x = connection.ExecuteScalar(sqlObtener, new Usuario { IdSegas = user.IdSegas, NombreUsuario = user.username, Empresa = user.Empresa, Rol = user.Roll, Activo = user.Activo, Nombre = user.Nombre });
+                var resultado = Convert.ToInt32(x);
+                return resultado;
+            }
+        }
+
+        public static Usuario ActivarUsuario(Usuario entidad)
+        {
+            var sqlObtener = "UPDATE [dbo].[Usuario] set Activo = @Activo where Id = @Id;" +
+                             "SELECT @@IDENTITY";
+
+            Database db = DatabaseFactory.CreateDatabase("Auction");
+            using (var connection = new SqlConnection(db.ConnectionString)) //user.username
+            {
+                var x = connection.ExecuteScalar(sqlObtener, new Usuario { Activo = entidad.Activo, Id = entidad.Id });
+                var resultado = Convert.ToInt32(x);
+                return entidad;
             }
         }
     }

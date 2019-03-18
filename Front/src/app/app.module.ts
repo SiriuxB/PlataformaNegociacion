@@ -32,13 +32,16 @@ import { CompraVentaModule } from './main/content/MercadoModule/CompraVenta/Comp
 import { InfoUsuarioModule } from './main/content/InfoUsuario/InfoUsuario.module';
 import { BoletaVentaModule } from './main/content/MercadoModule/Boleta-Venta/Boleta-Venta.module';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { ParticipantesModule } from './main/content/AdminModule/Participantes/Participantes.module';
+import { CheckBoxRenderComponent } from './main/content/Renders/CheckBoxRender/CheckBoxRender.component';
+import { RendersModule } from './main/content/Renders/RendersModule';
 
 
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
@@ -59,6 +62,9 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
         BoletaVentaModule, 
         OwlDateTimeModule, 
         OwlNativeDateTimeModule,
+        ParticipantesModule,
+        RendersModule
+        
     ],
     providers: [
         HeaderBuilder

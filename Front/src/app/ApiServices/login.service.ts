@@ -18,16 +18,17 @@ import { HeaderBuilder } from 'app/Tools/HeaderBuilder';
 export class LoginService {
 
 
+
     private actionUrl: string;
     private headers: Headers;
     private GetParameterController: string;
     private LoginParametersMethod: string;
-    constructor(private http:HttpClient , public _Router: Router, private HeaderBuilder: HeaderBuilder
+    constructor(private http: HttpClient, public _Router: Router, private HeaderBuilder: HeaderBuilder
     ) {
         this.GetParameterController = '/UserAutenticationGas/';
 
     }
-    public SearchToken(tokenStr:string): Observable<boolean> {
+    public SearchToken(tokenStr: string): Observable<boolean> {
         this.LoginParametersMethod = 'SearchToken';
         const Authenticate: boolean = false;
         const TokenAccessRequest = new TokenBuilder().BuildWithToken(tokenStr).Build()
@@ -36,7 +37,7 @@ export class LoginService {
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
 
-        
+
         const httpOptions = this.HeaderBuilder.HeadNow()
         return this.http.post(`${AppSettings.Global().API}` + this.GetParameterController + this.LoginParametersMethod
             , params, httpOptions).map(this.extractDataLogin)
@@ -117,18 +118,72 @@ export class LoginService {
         console.log(error);
         return Promise.reject(errMsg);
     }
-    public LoginNow(usuario: Usuario): Observable<boolean> {
-        this.LoginParametersMethod = 'LoginNow';
+
+
+    public VerificarUsuarioCreado(usuario: UserAutentication): Observable<boolean> {
+        this.LoginParametersMethod = 'VerificarUsuarioCreado';
         const Authenticate: boolean = false;
         const params = JSON.stringify(usuario)
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(`${AppSettings.Global().EndPoints.API}` + '/Subasta/' + this.LoginParametersMethod, params)
-            .map(this.extractDataLogin)
+        return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params)
+            .map(x => { return Boolean(x); })
             .catch(this.catchError);
 
     }
+
+    public VerificarUsuarioActivo(usuario: UserAutentication): Observable<boolean> {
+        this.LoginParametersMethod = 'VerificarUsuarioActivo';
+        const Authenticate: boolean = false;
+        const params = JSON.stringify(usuario)
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(`${AppSettings.Global().EndPoints.API}` + this.GetParameterController + this.LoginParametersMethod, params)
+            .map(x => { return Boolean(x); })
+            .catch(this.catchError);
+
+    }
+
+    public CrearUsuario(usuario: UserAutentication): Observable<UserAutentication> {
+        this.LoginParametersMethod = 'CrearUsuario';
+        const Authenticate: boolean = false;
+        const params = JSON.stringify(usuario)
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+
+
+        const httpOptions = this.HeaderBuilder.HeadNow()
+        return this.http.post<UserAutentication>(`${AppSettings.Global().API}` + this.GetParameterController + this.LoginParametersMethod, params, httpOptions)
+            .catch(this.catchError);
+
+    }
+    public VerUsuarios(): Observable<Array<Usuario>> {
+        this.LoginParametersMethod = 'VerUsuarios';
+        const params = JSON.stringify("")
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        const httpOptions = this.HeaderBuilder.HeadNow()
+        return this.http.post<Array<Usuario>>(`${AppSettings.Global().API}` + '/Subasta/' + this.LoginParametersMethod, params, httpOptions)
+            .catch(this.catchError);
+
+    }
+
+    ActivarUsuario(Usuario):  Observable<Usuario> {
+        this.LoginParametersMethod = 'ActivarUsuario';
+        const params = JSON.stringify(Usuario)
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        const httpOptions = this.HeaderBuilder.HeadNow()
+        return this.http.post<Usuario>(`${AppSettings.Global().API}` + this.GetParameterController + this.LoginParametersMethod, params, httpOptions)
+            .catch(this.catchError);
+    }
+
+
+
+
 
 }
 

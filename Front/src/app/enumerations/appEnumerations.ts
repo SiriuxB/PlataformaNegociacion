@@ -1,4 +1,16 @@
 export module AppEnumerations {
+    
+    export enum GasProfile
+    {
+
+        Subastador = 1,
+        Vendedor = 2,
+        Comprador = 3,
+        Administrador = 4
+
+    }
+
+
     export enum RollConsulta {
         OperadorBmc1 = 1,
         OperadorBmc2 = 40,

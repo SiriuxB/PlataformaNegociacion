@@ -8,5 +8,8 @@ namespace Dataifx.AuctionDesc.Services.Models
         string GetToken(Token token);
 
         UserAutentication SearchToken(Token tokenObj);
+        bool VerificarUsuarioCreado(UserAutentication user);
+        bool VerificarUsuarioActivo(UserAutentication user);
+        UserAutentication CrearUsuario(UserAutentication user);
     }
 }

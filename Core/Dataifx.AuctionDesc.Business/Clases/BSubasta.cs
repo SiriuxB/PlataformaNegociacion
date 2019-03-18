@@ -432,41 +432,41 @@ namespace Dataifx.AuctionDesc.Business.Clases
             CancelarSubastas();
             return VerSubastaActual();
         }
-        public static Usuario GuardarUsuario(Usuario entidad)
-        {
-            try
-            {
-                entidad.Password = Encriptar(entidad.Password);
-                if (entidad.Id == 0)
-                {
-                    var obj = DataUser.LoginNow(entidad);
-                    if (obj != null && obj.UserName == entidad.UserName)
-                    {
-                        entidad.EstadoPeticionOK = false;
-                        entidad.ErrorMensaje = "Ya hay un usuario registrado con este nombre.";
-                    }
-                    else
-                    {
-                        entidad = DataUser.GuardarUsuario(entidad);
-                    }
-                    return entidad;
-                }
-                else
-                {
-                    entidad = DataUser.ActualizarUsuario(entidad);
-                }
-                return entidad;
-            }
-            catch (System.Exception ex)
-            {
-                entidad.ErrorMensaje = ex.Message;
-                entidad.EstadoPeticionOK = false;
-                GasLogB.CrearLogError(ex);
-                return entidad;
-            }
-        }
+        //public static Usuario GuardarUsuario(Usuario entidad)
+        //{
+        //    try
+        //    {
+        //        entidad.Password = Encriptar(entidad.Password);
+        //        if (entidad.Id == 0)
+        //        {
+        //            var obj = DataUser.LoginNow(entidad);
+        //            if (obj != null && obj.UserName == entidad.UserName)
+        //            {
+        //                entidad.EstadoPeticionOK = false;
+        //                entidad.ErrorMensaje = "Ya hay un usuario registrado con este nombre.";
+        //            }
+        //            else
+        //            {
+        //                entidad = DataUser.GuardarUsuario(entidad);
+        //            }
+        //            return entidad;
+        //        }
+        //        else
+        //        {
+        //            entidad = DataUser.ActualizarUsuario(entidad);
+        //        }
+        //        return entidad;
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        entidad.ErrorMensaje = ex.Message;
+        //        entidad.EstadoPeticionOK = false;
+        //        GasLogB.CrearLogError(ex);
+        //        return entidad;
+        //    }
+        //}
 
-        public static IEnumerable<Usuario> VerUsuarios(Usuario entidad)
+        public static IEnumerable<Usuario> VerUsuarios()
         {
             IEnumerable<Usuario> resultado = null;
             try
@@ -476,8 +476,7 @@ namespace Dataifx.AuctionDesc.Business.Clases
             }
             catch (System.Exception ex)
             {
-                entidad.ErrorMensaje = ex.Message;
-                entidad.EstadoPeticionOK = false;
+            
                 GasLogB.CrearLogError(ex);
                 return resultado;
             }
@@ -507,59 +506,59 @@ namespace Dataifx.AuctionDesc.Business.Clases
         }
 
 
-        public static Usuario LoginNow(Usuario entidad)
-        {
-            try
-            {
+        //public static Usuario LoginNow(Usuario entidad)
+        //{
+        //    try
+        //    {
 
-                var retorno = DataUser.LoginNow(entidad);
-                var userautentication = new UserAutentication();
-                byte[] data = Convert.FromBase64String(entidad.Password);
-                string decodedString = Encoding.UTF8.GetString(data);
-                if (retorno != null)
-                {
-                    retorno.UserAutentication = userautentication;
-                    entidad.Password = decodedString;
-                    retorno.Password = DesEncriptar(retorno.Password);
-                    if (entidad.Password == retorno.Password)
-                    {
-                        MapearObjetoUserAutentication(retorno);
-                        retorno.Password = Encriptar(retorno.Password);
-                    }
-                    else
-                    {
-                        entidad.Id = 0;
-                        retorno = entidad;
-                        retorno.UserAutentication = userautentication;
-                        retorno.UserAutentication.access = 0;
-                    }
-                }
-                else
-                {
-                    retorno = new Usuario();
-                    retorno.UserAutentication = userautentication;
-                    retorno.UserAutentication.access = 0;
-                }
-                return retorno;
-            }
-            catch (System.Exception ex)
-            {
-                GasLogB.CrearLogError(ex);
-                return entidad;
-            }
-        }
+        //        var retorno = DataUser.LoginNow(entidad);
+        //        var userautentication = new UserAutentication();
+        //        byte[] data = Convert.FromBase64String(entidad.Password);
+        //        string decodedString = Encoding.UTF8.GetString(data);
+        //        if (retorno != null)
+        //        {
+        //            retorno.UserAutentication = userautentication;
+        //            entidad.Password = decodedString;
+        //            retorno.Password = DesEncriptar(retorno.Password);
+        //            if (entidad.Password == retorno.Password)ver
+        //            {
+        //                MapearObjetoUserAutentication(retorno);
+        //                retorno.Password = Encriptar(retorno.Password);
+        //            }
+        //            else
+        //            {
+        //                entidad.Id = 0;
+        //                retorno = entidad;
+        //                retorno.UserAutentication = userautentication;
+        //                retorno.UserAutentication.access = 0;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            retorno = new Usuario();
+        //            retorno.UserAutentication = userautentication;
+        //            retorno.UserAutentication.access = 0;
+        //        }
+        //        return retorno;
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        GasLogB.CrearLogError(ex);
+        //        return entidad;
+        //    }
+        //}
 
-        private static void MapearObjetoUserAutentication(Usuario retorno)
-        {
+        //private static void MapearObjetoUserAutentication(Usuario retorno)
+        //{
 
-            retorno.UserAutentication.Empresa = retorno.Nombre;
-            retorno.UserAutentication.Nombre = retorno.Nombre;
-            retorno.UserAutentication.Perfil = retorno.Rol;
-            retorno.UserAutentication.Roll = retorno.Rol;
-            retorno.UserAutentication.username = retorno.UserName;
-            retorno.UserAutentication.IdSegas = retorno.Id;
-            retorno.UserAutentication.access = retorno.Activo ? 1 : 0;
-        }
+        //    retorno.UserAutentication.Empresa = retorno.Nombre;
+        //    retorno.UserAutentication.Nombre = retorno.Nombre;
+        //    retorno.UserAutentication.Perfil = retorno.Rol;
+        //    retorno.UserAutentication.Roll = retorno.Rol;
+        //    retorno.UserAutentication.username = retorno.UserName;
+        //    retorno.UserAutentication.IdSegas = retorno.Id;
+        //    retorno.UserAutentication.access = retorno.Activo ? 1 : 0;
+        //}
 
         /// Encripta una cadena
         public static string Encriptar(string _cadenaAencriptar)
@@ -578,6 +577,22 @@ namespace Dataifx.AuctionDesc.Business.Clases
             //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
             result = System.Text.Encoding.Unicode.GetString(decryted);
             return result;
+        }
+
+        public static Usuario ActivarUsuario(Usuario entidad)
+        {
+
+            var resultado = new Usuario();
+            try
+            {
+                resultado = DataUser.ActivarUsuario(entidad);
+                return resultado;
+            }
+            catch (System.Exception ex)
+            {
+                GasLogB.CrearLogError(ex);
+                return resultado;
+            }
         }
     }
 

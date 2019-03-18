@@ -2,8 +2,14 @@
 
 namespace Dataifx.AuctionDesc.Infrastructure.Models
 {
-    public class UserAutentication : EntidadBase
+    public class UserAutentication 
     {
+        [Computed]
+        public int Id
+        {
+            get;
+            set;
+        }
         [Computed]
         public string username
         {
@@ -73,7 +79,11 @@ namespace Dataifx.AuctionDesc.Infrastructure.Models
             get;
             set;
         }
-
-
+        [Computed]
+        public bool Activo
+        {
+            get;
+            set;
+        }
     }
 }

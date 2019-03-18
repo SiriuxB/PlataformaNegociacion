@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 export const appRoutes: Routes = [
     //Autenticacion
     { path: 'LayoutMercado', redirectTo: '/LayoutMercado', pathMatch: 'full' },
+    { path: 'Participantes', redirectTo: '/Participantes', pathMatch: 'full' },
     { path: 'register', redirectTo: '/register' },
     { path: 'cambiarClave', redirectTo: '/cambiarClave' },
     { path: 'error-404', redirectTo: '/error-404' },
